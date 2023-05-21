@@ -2,13 +2,14 @@ const staticPath = "_static";
 const sitePath = "_site";
 const cachePath = ".cache";
 
-import { Image, decode } from "https://deno.land/x/imagescript/mod.ts";
+import jimp from "npm:jimp";
 
 const mapList = new Map();
 const imageRoot = "/images";
 const imagePath = staticPath + imageRoot;
 const thumbnailRoot = "/thumbnail";
 const thumbnailImageRoot = imageRoot + thumbnailRoot;
+const lumeRoot = Deno.cwd();
 
 const cacheJsonName = "cache.json";
 const cacheJsonPath = cachePath + thumbnailRoot + "/" + cacheJsonName;
@@ -28,6 +29,7 @@ function getFileList(cur: string) {
     const _getFileList = (cur: string) => {
         Array.from(Deno.readDirSync(cur)).forEach((item: any) => {
             const itemPath = `${cur}/${item.name}`;
+            const itemFullPath = `${lumeRoot}/${itemPath}`;
             const imageName = itemPath.replace(imagePath, "");
             const imageUrl = imageRoot + imageName;
             const thumbnailUrl = thumbnailRoot + imageName;
@@ -41,7 +43,7 @@ function getFileList(cur: string) {
                 _getFileList(itemPath);
             } else {
                 if (/(png|jpg|jpeg)$/i.test(imageName)) {
-                    list.push({ itemPath, imageName, imageUrl, thumbnailUrl, outputUrl, outputPath, cacheOutPath });
+                    list.push({ itemPath, itemFullPath, imageName, imageUrl, thumbnailUrl, outputUrl, outputPath, cacheOutPath });
                 }
             }
         });
@@ -62,20 +64,23 @@ list.forEach(async (item) => {
         mapCache.delete(item.imageUrl);
         await Deno.copyFile(item.cacheOutPath, item.outputPath);
     } else {
-        const imgFile = await Deno.readFile(item.itemPath);
-        const img = <Image>await decode(imgFile);
-        const size = { width: 320, height: 320 };
-        if (img.width > img.height) { size.width = Image.RESIZE_AUTO; }
-        else { size.height = Image.RESIZE_AUTO; }
-        // 縮小手法がニアレストしかないので追加まではこれで我慢
-        const thumbimg = img.resize(size.width, size.height);
-        if (thumbimg !== undefined) {
+        await jimp.read(item.itemFullPath).then((img) => {
+            const w = img.bitmap.width;
+            const h = img.bitmap.height;
+            if (w === h) {
+                img.contain(320, 320);
+            } else if (w > h) {
+                img.contain(320 * w / h, 320);
+            } else {
+                img.contain(320, 320 * h / w);
+            }
+            const output = (`${lumeRoot}/${item.cacheOutPath}`);
+            img.writeAsync(output);
+            Deno.copyFileSync(item.cacheOutPath, item.outputPath);
             if ((++i % 10) === 0 || i === max) {
                 console.log(`Made thumbnail: (${i}/${max})`)
             }
-            await Deno.writeFile(item.cacheOutPath, await (item.thumbnailUrl.match(/\.png$/) ? thumbimg.encode() : thumbimg.encodeJPEG()));
-            await Deno.copyFile(item.cacheOutPath, item.outputPath);
-        }
+        });
     }
 })
 Deno.writeTextFile(cacheJsonPath, JSON.stringify(Object.fromEntries(mapOutCache)));
