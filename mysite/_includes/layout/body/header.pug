@@ -1,0 +1,12 @@
+header
+  .title
+    a(href='/')
+      .logo #{site.title}
+    != svgData.mapList.get(`${svgData.path}/menu_button.svg`)
+  .menu
+    each item in menu.main
+      //- PageSectionと同じでなければselectedは付与しない
+      a(href=`${item.url}`)
+        .navi(class=`${pageSection==item.name?'selected':''}`) #{(item.short || item.name).toUpperCase()}
+  .background
+.fillScreen.exit.menuExit

@@ -1,0 +1,22 @@
+---
+layout: "layout/page/default.pug"
+type: "page"
+SectionTitle: true
+section: "app"
+title: "app list"
+description: 色々とつくってます
+tags:
+  - app
+  - list
+---
+
+h1 APP LIST
+h3 ご自由にお使いください
+.flex.center
+  - let pages = Array.from(search.pages("app list child"));
+  - pages = pages.map((item)=>{return item.data}).sort((a,b)=>a.index-b.index);
+  each item in pages
+    div
+      h2.lulo
+        a(href=`${item.url}`) #{item.title.toUpperCase()}
+      != filters.md(item.content)

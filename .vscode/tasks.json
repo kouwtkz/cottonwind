@@ -1,0 +1,35 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "detail": "ビルドする",
+            "type": "shell",
+            "command": "cd mysite; deno task lume"
+        },
+        {
+            "label": "start",
+            "detail": "デバッグする",
+            "type": "shell",
+            "command": "cd mysite; deno task lume -s"
+        },
+        {
+            "type": "shell",
+            "command": "cd mysite/_site; node D:/Application/node/wsv.js ./ 3000",
+            "label": "view"
+        },
+        {
+            "label": "deploy",
+            "detail": "Firebaseへデプロイする",
+            "type": "shell",
+            "command": "firebase deploy"
+        },
+        {
+            "label": "init",
+            "type": "shell",
+            "command": "cd mysite; deno run -Ar https://deno.land/x/lume/init.ts"
+        }
+    ]
+}

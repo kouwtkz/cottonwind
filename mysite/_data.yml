@@ -1,0 +1,91 @@
+site:
+  baseURL: 'https://kouwtkz-site.web.app/'
+  languageCode: 'ja'
+  title: 'わたかぜっこ'
+  maxView: 256
+  description: '『わたかぜコウ』のポートフォリオサイト。気まぐれに様々なイラストや作品を載せてます。'
+  short:
+    description: 'わたかぜコウのポートフォリオサイト'
+  icon:
+    path: '/icons/icon.png'
+    size: ['48x48', '180x180', '192x192', '256x256', '512x512']
+  manifest:
+    background_color: "#c1d64c"
+    path: '/manifest.json'
+  google:
+  # とりあえず前のサイトのやーつ
+    analytics: "G-5ZTX38MD12"
+  devide:
+    menu:
+      setting: 'app'
+
+  enableEmoji: true
+  enableRobotsTXT: true
+
+setupSound: 'NewLeafLoad_2lp.m4a'
+author:
+  account: 'kouwtkz'
+  ename: 'Kou Watakaze'
+  mail: 'kouwtkz@outlook.jp'
+  name: 'わたかぜコウ'
+  since: 2017
+  twitter:
+    account: 'kouwtkz'
+
+# Nav.
+
+menu:
+  main:
+    -
+      name: 'about'
+      url: '/about/'
+    -
+      name: 'art'
+      url: '/art/'
+    -
+      name: 'character'
+      short: 'chara'
+      url: '/character/'
+    -
+      name: 'note'
+      url: '/note/'
+    -
+      name: 'sound'
+      url: '/sound/'
+    -
+      name: 'app'
+      url: '/app/'
+    -
+      name: 'special'
+      url: '/special/'
+  sns:
+    -
+      name: 'twitter'
+      url: 'https://twitter.com/kouwtkz'
+      svg: 'sns/twitter'
+      index: 1
+    -
+      name: 'youtube'
+      url: 'https://www.youtube.com/@kouwtkz'
+      svg: 'sns/youtube'
+      index: 2
+    -
+      name: 'pixiv'
+      url: 'https://www.pixiv.net/users/5577703'
+      svg: 'sns/pixiv'
+      index: 3
+    -
+      name: 'instagram'
+      url: 'https://www.instagram.com/kouwtkz/'
+      svg: 'sns/instagram'
+      index: 4
+    -
+      name: 'github'
+      url: 'https://github.com/kouwtkz'
+      svg: 'sns/github'
+      index: 5
+    -
+      name: 'profcard'
+      url: '/about/profcard'
+      svg: 'sns/other'
+      index: 6

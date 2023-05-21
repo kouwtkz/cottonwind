@@ -1,0 +1,23 @@
+---
+layout: "layout/page/default.pug"
+type: "list"
+title: "わたかぜのすみか"
+index: 1
+enable:
+  date: true
+tags:
+  - note
+  - category
+  - list
+  - blog
+---
+
+h1 #{title}
+.flex.center
+  - let pages = Array.from(search.pages("note blog article"));
+  - pages = pages.map((item)=>{return item.data}).sort((a,b)=>a.index-b.index);
+  each item in pages
+    div
+      h2.lulo
+        a(href=`${item.url}`) #{item.title.toUpperCase()}
+      h3 #{item.description}

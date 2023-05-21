@@ -1,0 +1,75 @@
+---
+layout: "layout/page/default.pug"
+type: "page"
+sectionTitle: true
+section: "about"
+image: "/images/main/代理に私服を着せてみた.png"
+---
+
+h1 PROFILE
+h2 #{author.name}
+h3 #{author.ename.toLowerCase()}
+
+p
+  img.iconL(src=`${image}` alt="メインイメージ" style={"border-radius": "100px"})
+p
+  a(href=`https://twitter.com/${author.twitter.account}` target="_blank") #{author.twitter.account}
+
+p もふもふなキャラでほわほわした絵を描いてます！
+p
+  a(href="/art") かわいい絵
+  | が得意です！
+p 九州住み、12/22生まれ​
+p
+  a(href="/about/profcard") » プロフィール詳細
+
+h2 連絡先
+p
+  a(href="/about/contact") » こちらに掲載してます！
+
+h2 作業環境
+ul
+  li
+    | ペイントソフト
+    ul
+      li CLIP STUDIO PAINT EX
+      li Adobe PhotoShop
+  li
+    | ベクターソフト
+    ul
+      li Figma
+      li Adobe Illustrator
+  li
+    | コーディング
+    ul
+      li Visual Studio Code
+
+h2 このサイトについて
+ul
+  li 自力で作ってます！
+  li
+    a(href="privacy") プライバシーポリシー
+  li
+    | 技術的に使ったもの
+    ul 
+      li
+        | サイトジェネレータ: 
+        a(href="https://lume.land/" target="_blank") lume
+      li
+        | テンプレートエンジン: 
+        a(href="https://pugjs.org/api/getting-started.html" target="_blank") Pug
+      li
+        | ホスティングサービス: 
+        a(href="https://firebase.google.com/" target="_blank") Firebase
+      li
+        | アニメーション: 
+        a(href="https://greensock.com/gsap/" target="_blank") GSAP
+      li
+        | ページ遷移: 
+        a(href="https://barba.js.org/" target="_blank") BarbaJS
+      li
+        | フォント: 
+        a(href="https://fonts.google.com/" target="_blank") GoogleFonts
+      li
+        | 絵文字: 
+        a(href="https://twemoji.twitter.com/" target="_blank") Twemoji

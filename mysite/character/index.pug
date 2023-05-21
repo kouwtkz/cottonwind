@@ -1,0 +1,18 @@
+---
+layout: "layout/page/default.pug"
+title: "character"
+type: "list"
+sectionTitle: true
+---
+
+h1 #{title}
+.list.flex
+  - let pages = Array.from(search.pages("character introduction"));
+  - pages = pages.map((item)=>{return item.data}).sort((a,b)=>a.index-b.index);
+  each item in pages
+    div
+      a(href=`${item.url}`)
+        div
+          img.iconM(src=`${thumbnail.mapList.get(item.image)||item.image}`)
+          h2 #{item.title}
+      h3 #{item.description}

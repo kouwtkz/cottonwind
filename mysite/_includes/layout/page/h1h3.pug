@@ -1,0 +1,6 @@
+extends ../html 
+
+block content
+  h1 #{title}
+  h3 #{description}
+  != filters.md(content)

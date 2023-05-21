@@ -1,0 +1,5 @@
+footer
+  p © #{author.since}-#{new Date().getFullYear()} #{author.ename}
+  p
+    each item in menu.sns
+      a.button(href=`${item.url}` target="_blank") !{svgData.mapList.get(`${svgData.path}/${item.svg}.svg`)}

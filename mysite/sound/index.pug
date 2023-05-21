@@ -1,0 +1,19 @@
+---
+layout: "layout/page/default.pug"
+type: "sound-list"
+sectionTitle: true
+---
+
+h1 SOUND ROOM
+h3 音楽も色々と作ってます
+
+ul.playlist
+  - const data = soundData.music;
+  each item in data.list
+    - path: 
+    li.button(data-title=`${item.title}` data-src=`${data.path}/${item.src}` onclick='audio_play(this)')
+      .title
+        h3 #{item.title}
+      .audio.play
+        != svgData.mapList.get(`${svgData.path}/audio/play.svg`)
+        != svgData.mapList.get(`${svgData.path}/audio/pause.svg`)

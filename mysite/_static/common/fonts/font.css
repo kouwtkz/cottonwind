@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "LuloCleanW01-OneBold";
+    src: url("LuloCleanW01B.ttf");
+    font-display: swap;
+}
+@font-face {
+    font-family: "KW custom";
+    src: url("KW-custom.ttf");
+    font-display: swap;
+}
+body .base.width {
+    animation-name: fade50;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+body {
+    font-family: "KW custom", "Mandali", "Kosugi Maru", sans-serif;
+}
+::marker {
+    font-family: "Kosugi Maru", sans-serif;
+    font-size: 1.2em;
+    line-height: 1em;
+}

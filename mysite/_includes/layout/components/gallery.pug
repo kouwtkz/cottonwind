@@ -1,0 +1,15 @@
+.gallery
+  .group.main
+    .title
+      a(href='/art/main' data-barba-fade-disable='0')
+        h1.anker MAINART
+    .list(data-max=`${maxView}`)
+      each item, i in imageData.mainArtList.list
+        - const src = `${imageData.mainArtList.path}/${item.src}`;
+        .cell
+          a(href=`#${encodeURI(src)}`)
+            img(src=`${src}` alt=`${item.name||item.src}` data-title=`${item.name||item.src}`
+              data-description=`${item.description||''}` data-date=`${item.time}` data-link=`${item.link||item.src}`)
+      .cell.more
+        a(href='/art/main' data-barba-fade-disable='0')
+          != svgData.mapList.get(`${svgData.path}/more_button.svg`)

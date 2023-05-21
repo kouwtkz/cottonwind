@@ -1,0 +1,12 @@
+#audio_box.playing(data-title=`title`)
+  audio#audio_player(src=`/music/${setupSound}` loop='')
+  script(src='/common/js/audio.js')
+  div
+    .audio.button.play(onclick='audio_play()')
+      != svgData.mapList.get(`${svgData.path}/audio/play.svg`)
+      != svgData.mapList.get(`${svgData.path}/audio/pause.svg`)
+    .audio.button.stop(onclick='audio_stop()')
+      != svgData.mapList.get(`${svgData.path}/audio/stop.svg`)
+    .audio.button.loop(onclick='audio_loop()')
+      != svgData.mapList.get(`${svgData.path}/audio/loop.svg`)
+#audio_background

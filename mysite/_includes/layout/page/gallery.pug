@@ -1,0 +1,21 @@
+extends ../html
+
+block content
+  .gallery
+    each grp in (childList || [{name: page.src.slug, path: page.src.path, max: 500}])
+      - const data = imageData[grp.name];
+      .group(class=grp.name)
+        .title
+          a(href=`${grp.path}` data-barba-fade-disable='0')
+            h1.anker #{data.title.toUpperCase()}
+        .list(data-max=`${grp.max}`)
+          each item, i in (data.list.filter((e, i) => { return i < grp.max - 1 }))
+            - const src = `${data.path}/${item.src}`;
+            .cell
+              a(href=`#${encodeURI(src)}`)
+                img(src=`${thumbnail.mapList.get(src)||src}` alt=`${item.name||item.src}` data-title=`${item.title||item.src}`
+                  data-description=`${item.description||''}` data-date=`${item.time}` data-link=`${item.link||''}`)
+          if data.list.length > grp.max
+            .cell.more
+              a(href=`${grp.path}` data-barba-fade-disable='0')
+                != svgData.mapList.get(`${svgData.path}/more_button.svg`)

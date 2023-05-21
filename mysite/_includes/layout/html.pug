@@ -1,0 +1,20 @@
+doctype html
+- const pageSection = section || url.match(/\/([^/]*)/)[1];
+- const pageTitle = page.src.path.match(/^\/index$/) ? `${site.title} - ${site.short.description}` : `${pageSection.toUpperCase()} | ${site.title}`;
+html(lang="ja")
+  head
+    title= pageTitle
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    include head/load
+
+  body
+    .base.app
+      .base.width
+        include body/header
+        include components/lightbox
+        include components/audio
+        include body/main
+    #svg_data(style='display:none')
+      #more_button !{svgData.mapList.get(`${svgData.path}/more_button.svg`)}
+    include body/js.pug
