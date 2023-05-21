@@ -53,7 +53,7 @@ const list = getFileList(staticPath + imageRoot);
 const max = list.length;
 let i = 0;
 list.forEach(async (item) => {
-    const fileStat = await Deno.stat(item.itemPath);
+    const fileStat = Deno.statSync(item.itemPath);
     const mtime = fileStat.mtime?.getTime();
     const cacheFile = mapCache.get(item.imageUrl);
     mapList.set(item.imageUrl, item.outputUrl);
