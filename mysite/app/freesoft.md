@@ -1,5 +1,5 @@
 ---
-layout: "layout/page/h1h3.pug"
+layout: /page/h1h3.pug
 section: app
 title: "Free Soft"
 description: 自作フリーソフトです
@@ -11,5 +11,5 @@ tags:
   - freesoft
 ---
 
-- [QuickTrayPlayer](https://github.com/kouwtkz/QuickTrayPlayer/releases)
-- [FloatingKey](https://github.com/kouwtkz/FloatingKey/wiki/About-Floating-Key)
+- [QuickTrayPlayer](https://github.com/kouwtkz/QuickTrayPlayer/releases){target="_blank"}
+- [FloatingKey](https://github.com/kouwtkz/FloatingKey/wiki/About-Floating-Key){target="_blank"}

@@ -1,5 +1,5 @@
 ---
-layout: "layout/page/gallery.pug"
+layout: /page/gallery.pug
 type: "art-list"
 title: "頂いたファンアート"
 description: "#わたかぜメ絵"

@@ -1,5 +1,5 @@
 ---
-layout: "layout/page/h1h3.pug"
+layout: /page/h1h3.pug
 type: "article"
 title: "おためしGET"
 description: null
@@ -7,7 +7,8 @@ image: null
 categories: []
 date: 2022-05-17T18:22:04+09:00
 index: 1
-draft: false
+flags:
+  draft: false
 tags:
   - test
   - article

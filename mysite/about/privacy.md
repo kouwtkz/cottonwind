@@ -1,5 +1,5 @@
 ---
-layout: "layout/page/default.pug"
+layout: /page/default.pug
 type: "column"
 image: "/images/main/代理に私服を着せてみた.png"
 ---

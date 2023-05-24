@@ -22,9 +22,9 @@
         },
         {
             "label": "deploy",
-            "detail": "Firebaseへデプロイする",
+            "detail": "ビルド＆Firebaseへデプロイする",
             "type": "shell",
-            "command": "firebase deploy"
+            "command": "cd mysite; deno task lume; firebase deploy"
         },
         {
             "label": "init",

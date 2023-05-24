@@ -1,9 +1,9 @@
 ---
-layout: "layout/page/default.pug"
+layout: /page/default.pug
 type: "page"
-SectionTitle: true
 section: "setting"
-noindex: true
+flags:
+  noindex: true
 ---
 
 # 設定

@@ -1,9 +1,8 @@
 ---
-layout: "layout/page/gallery.pug"
+layout: /page/gallery.pug
 type: "art-list"
 title: "ファンアート"
 dir: "/images"
-maxView: 0x1000
 index: 2
 en:
   title: "fan art"

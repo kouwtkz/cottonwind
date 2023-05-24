@@ -1,6 +1,6 @@
 extends ../html
 
-block content
+block page
   .gallery
     each grp in (childList || [{name: page.src.slug, path: page.src.path, max: 500}])
       - const data = imageData[grp.name];

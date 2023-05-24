@@ -1,5 +1,6 @@
 doctype html
-- const pageSection = section || url.match(/\/([^/]*)/)[1];
+include function/customFilter
+- const pageSection = `${section || title || url.match(/\/([^/]*)/)[1]}`
 - const pageTitle = page.src.path.match(/^\/index$/) ? `${site.title} - ${site.short.description}` : `${pageSection.toUpperCase()} | ${site.title}`;
 html(lang="ja")
   head

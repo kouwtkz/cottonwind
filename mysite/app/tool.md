@@ -1,5 +1,5 @@
 ---
-layout: "layout/page/h1h3.pug"
+layout: /page/h1h3.pug
 section: app
 title: TOOL
 description: Webツールです
@@ -11,6 +11,6 @@ tags:
   - tool
 ---
 
-- [黒メモ](/app/tool/bn){.no-barba}
-- [JS実行ページ](/app/tool/js.html){.no-barba}
-- [JSONエディタ](/app/tool/jed.html){.no-barba}
+- [黒メモ](/app/tool/bn){target="_blank"}
+- [JS実行ページ](/app/tool/js.html){target="_blank"}
+- [JSONエディタ](/app/tool/jed.html){target="_blank"}

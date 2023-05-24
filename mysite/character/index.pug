@@ -1,15 +1,28 @@
 ---
-layout: "layout/page/default.pug"
+layout: /page/default.pug
 title: "character"
 type: "list"
-sectionTitle: true
+tags:
+  - sitemap
 ---
 
+- let pages = Array.from(search.pages("character introduction"));
+- pages = pages.map((item)=>{return item.data}).sort((a,b)=>a.index-b.index);
 h1 #{title}
+h2 わたかぜワールドのあるじ
+- let CharList = pages.concat();
 .list.flex
-  - let pages = Array.from(search.pages("character introduction"));
-  - pages = pages.map((item)=>{return item.data}).sort((a,b)=>a.index-b.index);
-  each item in pages
+  each item in CharList.filter(v=>v.tags.indexOf('myself')>=0)
+    div
+      a(href=`${item.url}`)
+        div
+          img.iconM(src=`${thumbnail.mapList.get(item.image)||item.image}`)
+          h2 #{item.title}
+      h3 #{item.description}
+- CharList = CharList.filter(v=>v.tags.indexOf('myself')<0);
+h2 わたかぜワールドのキャラクター
+.list.flex
+  each item in CharList
     div
       a(href=`${item.url}`)
         div

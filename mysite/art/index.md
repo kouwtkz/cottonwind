@@ -1,7 +1,6 @@
 ---
-layout: "layout/page/gallery.pug"
+layout: /page/gallery.pug
 type: "art-list"
-sectionTitle: true
 childList:
   -
     name: main
