@@ -1,6 +1,7 @@
 ---
 layout: /page/h1h3.pug
-section: app
+section: other
+type: app
 title: Extension
 description: 自作拡張機能です
 index: 3

@@ -1,4 +1,4 @@
-layout: /page/gallery.pug
+layout: /page/artPage.pug
 type: "art-list"
 section: art
 childList:

@@ -1,6 +1,6 @@
 ---
 layout: /page/h1h3.pug
-type: "article"
+section: other
 title: "おためしGET"
 description: null
 image: null

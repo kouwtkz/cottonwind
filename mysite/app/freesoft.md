@@ -1,6 +1,7 @@
 ---
 layout: /page/h1h3.pug
-section: app
+section: other
+type: app
 title: "Free Soft"
 description: 自作フリーソフトです
 index: 2

@@ -7,14 +7,20 @@ image: "/images/main/代理とかしわもち.png"
 date: 2022-05-16T18:26:50+09:00
 index: 1
 draft: false
+tag: watakaze
 tags:
   - character
   - introduction
   - watakaze
   - myself
 ---
+include ../_includes/components/gallery.pug
 
 h1 #{title}
 h3 #{description}
 
 img.iconL(src=`${image}` style={"border-radius": "8px"})
+p
+.gallery
+  h2 RECENTLY ART
+  +galleryList({dir: "/images/main", max: 20, list: (mediaData.image.main.list.filter((e)=>e.tags.findIndex(e=>e==tag)>=0))})

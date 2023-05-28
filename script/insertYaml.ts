@@ -18,7 +18,7 @@ imageGroups.forEach((group) => {
     const data = yamlData.data;
     const dirPath = data.path ? `${mysiteDir}/_static${data.path}` : `${imageDir}/${group}`;
     const dataList = (<ArrayObject>data.list) || [];
-    let update = false;
+    let update = true;
     const readDirList = Array.from(Deno.readDirSync(dirPath))
         .map((item) => {
             const stat = Deno.statSync(`${dirPath}/${item.name}`);
@@ -33,7 +33,8 @@ imageGroups.forEach((group) => {
                     time: date_format('Y-m-d H:i:s', item.mtime),
                     mtime: item.mtime,
                     title: item.name.replace(/.[^.]+$/, ""),
-                    description: ''
+                    description: '',
+                    tags: [group]
                 };
                 dataList.push(insertData);
                 update = true;

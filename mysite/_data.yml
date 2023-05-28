@@ -37,56 +37,37 @@ author:
 
 menu:
   main:
-    -
-      name: 'about'
+    - name: 'about'
       url: '/about/'
-    -
-      name: 'art'
+    - name: 'art'
       url: '/art/'
-    -
-      name: 'character'
+    - name: 'character'
       short: 'chara'
       url: '/character/'
-    -
-      name: 'note'
-      url: '/note/'
-    -
-      name: 'sound'
+    - name: 'sound'
       url: '/sound/'
-    -
-      name: 'app'
-      url: '/app/'
-    -
-      name: 'special'
+    - name: 'game'
+      url: '/game/'
+    - name: 'special'
       url: '/special/'
+    - name: 'other'
+      url: '/other/'
   sns:
-    -
-      name: 'twitter'
+    - name: 'twitter'
       url: 'https://twitter.com/kouwtkz'
       svg: 'sns/twitter'
-      index: 1
-    -
-      name: 'youtube'
+    - name: 'youtube'
       url: 'https://www.youtube.com/@kouwtkz'
       svg: 'sns/youtube'
-      index: 2
-    -
-      name: 'pixiv'
+    - name: 'pixiv'
       url: 'https://www.pixiv.net/users/5577703'
       svg: 'sns/pixiv'
-      index: 3
-    -
-      name: 'instagram'
+    - name: 'instagram'
       url: 'https://www.instagram.com/kouwtkz/'
       svg: 'sns/instagram'
-      index: 4
-    -
-      name: 'github'
+    - name: 'github'
       url: 'https://github.com/kouwtkz'
       svg: 'sns/github'
-      index: 5
-    -
-      name: 'profcard'
+    - name: 'profcard'
       url: '/about/profcard'
       svg: 'sns/other'
-      index: 6

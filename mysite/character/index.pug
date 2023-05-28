@@ -1,6 +1,5 @@
 ---
 layout: /page/default.pug
-title: character
 section: character
 type: "list"
 tags:
@@ -9,7 +8,7 @@ tags:
 
 - let pages = Array.from(search.pages("character introduction"));
 - pages = pages.map((item)=>{return item.data}).sort((a,b)=>a.index-b.index);
-h1 #{title}
+h1 #{section}
 h2 わたかぜワールドのあるじ
 - let CharList = pages.concat();
 .list.flex

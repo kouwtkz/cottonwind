@@ -1,0 +1,13 @@
+extends ../html
+include ../components/gallery.pug
+
+block page
+  != customFilter(filters.md(content))
+  .gallery
+    each grp in (childList || [{name: page.src.slug, path: page.src.path, max: (page.data.max || 500)}])
+      - const data = mediaData.image[grp.name];
+      .group(class=`${grp.name}`)
+        .title
+          a(href=`${grp.path}` data-barba-fade-disable='0')
+            h1.anker #{data.title.toUpperCase()}
+        +galleryList({ obj: data, grp: grp } )

@@ -1,7 +1,8 @@
 ---
 layout: /page/h1h3.pug
-section: app
-title: TOOL
+section: other
+type: app
+title: Tool
 description: Webツールです
 index: 1
 tags:
