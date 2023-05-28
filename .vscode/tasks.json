@@ -27,6 +27,12 @@
             "command": "cd mysite; deno task lume; firebase deploy"
         },
         {
+            "label": "insert",
+            "detail": "管理",
+            "type": "shell",
+            "command": "cd script; deno run --allow-env --allow-read --allow-write ./insertYaml.ts"
+        },
+        {
             "label": "init",
             "type": "shell",
             "command": "cd mysite; deno run -Ar https://deno.land/x/lume/init.ts"

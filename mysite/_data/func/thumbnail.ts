@@ -2,6 +2,8 @@ const staticPath = "_static";
 const sitePath = "_site";
 const cachePath = ".cache";
 
+const thumbSize = 320;
+
 import jimp from "npm:jimp";
 
 const mapList = new Map();
@@ -64,22 +66,22 @@ list.forEach(async (item) => {
         mapCache.delete(item.imageUrl);
         await Deno.copyFile(item.cacheOutPath, item.outputPath);
     } else {
-        await jimp.read(item.itemFullPath).then((img) => {
+        await jimp.read(item.itemFullPath).then(async (img) => {
             const w = img.bitmap.width;
             const h = img.bitmap.height;
             if (w === h) {
-                img.contain(320, 320);
+                img.contain(thumbSize, thumbSize);
             } else if (w > h) {
-                img.contain(320 * w / h, 320);
+                img.contain(thumbSize * w / h, thumbSize);
             } else {
-                img.contain(320, 320 * h / w);
+                img.contain(thumbSize, thumbSize * h / w);
             }
             const output = (`${lumeRoot}/${item.cacheOutPath}`);
-            img.writeAsync(output);
-            Deno.copyFileSync(item.cacheOutPath, item.outputPath);
-            if ((++i % 10) === 0 || i === max) {
-                console.log(`Made thumbnail: (${i}/${max})`)
-            }
+            await img.writeAsync(output).then(
+                async () => {
+                    await Deno.copyFile(item.cacheOutPath, item.outputPath);
+                }
+            );
         });
     }
 })

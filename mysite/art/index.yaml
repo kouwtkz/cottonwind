@@ -1,6 +1,6 @@
----
 layout: /page/gallery.pug
 type: "art-list"
+section: art
 childList:
   -
     name: main
@@ -10,4 +10,3 @@ childList:
     name: fanart
     path: /art/fanart
     max: 16
----

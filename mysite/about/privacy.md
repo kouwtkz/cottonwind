@@ -1,6 +1,7 @@
 ---
 layout: /page/default.pug
 type: "column"
+section: about
 image: "/images/main/代理に私服を着せてみた.png"
 ---
 

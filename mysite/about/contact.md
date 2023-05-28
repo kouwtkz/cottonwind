@@ -1,7 +1,7 @@
 ---
 layout: /page/default.pug
 type: "page"
-section: "contact"
+section: about
 flags:
   variable: true
 tags:

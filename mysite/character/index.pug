@@ -1,6 +1,7 @@
 ---
 layout: /page/default.pug
-title: "character"
+title: character
+section: character
 type: "list"
 tags:
   - sitemap
@@ -16,7 +17,7 @@ h2 わたかぜワールドのあるじ
     div
       a(href=`${item.url}`)
         div
-          img.iconM(src=`${thumbnail.mapList.get(item.image)||item.image}`)
+          img.iconM(src=`${func.thumbnail.mapList.get(item.image)||item.image}`)
           h2 #{item.title}
       h3 #{item.description}
 - CharList = CharList.filter(v=>v.tags.indexOf('myself')<0);
@@ -26,6 +27,6 @@ h2 わたかぜワールドのキャラクター
     div
       a(href=`${item.url}`)
         div
-          img.iconM(src=`${thumbnail.mapList.get(item.image)||item.image}`)
+          img.iconM(src=`${func.thumbnail.mapList.get(item.image)||item.image}`)
           h2 #{item.title}
       h3 #{item.description}

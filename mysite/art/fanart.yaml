@@ -1,13 +1,12 @@
----
 layout: /page/gallery.pug
 type: "art-list"
-title: "メインアート"
+section: art
+title: "ファンアート"
 dir: "/images"
-index: 1
+index: 2
 en:
-  title: "main art"
+  title: "fan art"
 tags:
   - gallery
   - list
-  - main-art
----
+  - fan-art

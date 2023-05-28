@@ -1,7 +1,7 @@
 ---
 layout: /page/default.pug
-type: "page"
-section: "profcard"
+type: page
+section: about
 image: "/images/main/代理に私服を着せてみた.png"
 flags:
   variable: true

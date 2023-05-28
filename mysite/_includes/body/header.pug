@@ -2,7 +2,7 @@ header
   .title
     a(href='/')
       .logo #{site.title}
-    != svgData.mapList.get(`${svgData.path}/menu_button.svg`)
+    != func.svgData.mapList.get(`${func.svgData.path}/menu_button.svg`)
   .menu
     each item in menu.main
       //- PageSectionと同じでなければselectedは付与しない

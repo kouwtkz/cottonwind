@@ -1,6 +1,7 @@
 ---
 layout: /page/gallery.pug
 type: "art-list"
+section: special
 title: "頂いたファンアート"
 description: "#わたかぜメ絵"
 dir: "/images"
