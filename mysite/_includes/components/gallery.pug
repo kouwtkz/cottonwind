@@ -8,7 +8,8 @@ mixin galleryList(options = {})
   - const timeReplace = options.timeReplace || obj.timeReplace || '';
   - const timeFormat = options.timeFormat || obj.timeFormat || 'Y-m-d H:i:s';
   - const grp = options.grp || { max: 500, path: '' }
-  - const moreLink = options.moreLink || grp.path || '';
+  - const flags = {...(grp.flags || {}), ...(options.flags || {})};
+  - const moreLink = (flags.moreLink === undefined ? true : flags.moreLink) ? (options.moreLink || grp.path || '') : '';
   - const moreLinkFlag = moreLink !== '';
   - const max = options.max || grp.max || 500;
   - const loopList = list.filter((e, i) => { return i < max - ((moreLinkFlag && list.length > max) ? 1 : 0) });
@@ -25,5 +26,5 @@ mixin galleryList(options = {})
             data-description=`${filters.md(item.description||'')}` data-date=`${timeStr}` data-link=`${item.link||''}`)
     if moreLinkFlag && list.length > max
       .cell.more
-        a(href=`${moreLink}` data-barba-fade-disable='0')
+        a(href=`${moreLink}` data-barba-fade-disable="false" data-barba-to-y=`.group.${grp.name||options.name||''}`)
           != func.svgData.mapList.get(`${func.svgData.path}/more_button.svg`)

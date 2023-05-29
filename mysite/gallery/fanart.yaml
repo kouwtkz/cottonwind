@@ -1,11 +1,12 @@
 layout: /page/artPage.pug
 section: gallery
-type: "art-list"
-title: "ファンアート"
-dir: "/images"
+type: art-list
+title: FAN ART
+h1: FANART (RECENT)
 index: 2
-en:
-  title: "fan art"
+max: 20
+flags:
+  moreLink: false
 tags:
   - gallery
   - list

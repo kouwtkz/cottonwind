@@ -28,15 +28,34 @@ function allCurrentHrefDelete(doc = document) {
 window.addEventListener("DOMContentLoaded", () => {
     allCurrentHrefDelete();
     if (!window.sectionTable) window.sectionTable = {};
-    var g_ccgs = { width: 0, pHeight: 0 };
-    var g_ncgs = { width: 0, pHeight: 0 };
-    var g_y = { from: 0, to: 0 };
-    var hasFadeDisable = false;
+    const g_ccgs = { width: 0, pHeight: 0 };
+    const g_ncgs = { width: 0, pHeight: 0 };
+    const g_y = { from: 0, to: 0 };
+    let hasFadeDisable = false;
 
     barba.init({
         timeout: 10000,
         preventRunning: true,
-        prevent: ({ el }) => el.classList && el.classList.contains('no-barba'),
+        prevent: ({ el, event }) => {
+            if (event.type === "click") {
+                g_y.to = 0;
+                if (el.dataset.barbaFadeDisable !== undefined) {
+                    hasFadeDisable = el.dataset.barbaFadeDisable;
+                } else {
+                    hasFadeDisable = false;
+                }
+                if (el.dataset.barbaToY) {
+                    const groupEl = document.querySelector(el.dataset.barbaToY);
+                    if (groupEl) {
+                        g_y.to = window.scrollY - groupEl.offsetTop;
+                        if (g_y.to < 0) g_y.to = 0;
+                    }
+                }
+                return el.classList && el.classList.contains('no-barba')
+            } else {
+                return true;
+            }
+        },
         requestError: (trigger, action, url, response) => {
             if (response.statusText.match(/timeout/i)) {
                 location.href = url;
@@ -49,8 +68,8 @@ window.addEventListener("DOMContentLoaded", () => {
                 sync: true,
                 name: "opacity-transition",
                 beforeLeave(data) {
-                    var cc = data.current.container;
-                    var nc = data.next.container;
+                    const cc = data.current.container;
+                    const nc = data.next.container;
                     nc.style.display = "none";
                     g_ccgs.width = getComputedStyle(cc).width;
                     g_ccgs.pHeight = getComputedStyle(cc.parentElement).height;
@@ -61,19 +80,6 @@ window.addEventListener("DOMContentLoaded", () => {
                     if (selected) {
                         selected.classList.remove("selected");
                     }
-                    hasFadeDisable = ((trigger) => {
-                        if (
-                            typeof trigger === "object" &&
-                            trigger.dataset.hasOwnProperty("barbaFadeDisable")
-                        ) {
-                            var v = trigger.dataset.barbaFadeDisable;
-                            return v === ""
-                                ? true
-                                : window.scrollY <= Number(v);
-                        } else {
-                            return false;
-                        }
-                    })(data.trigger);
                     if (location.pathname !== "/") {
                         let get_section =  `/${data.next.container.dataset.topmenu}` || "location.pathname.match(/.[^/]*/)[0]";
                         let checkSection = sectionTable[get_section.slice(1)];
@@ -87,10 +93,10 @@ window.addEventListener("DOMContentLoaded", () => {
                     }
                 },
                 beforeEnter(data) {
-                    var cc = data.current.container;
-                    var nc = data.next.container;
-                    var ccs = cc.style;
-                    var ncs = nc.style;
+                    const cc = data.current.container;
+                    const nc = data.next.container;
+                    const ccs = cc.style;
+                    const ncs = nc.style;
                     ccs.display = "none";
                     ncs.display = "";
                     g_ncgs.width = getComputedStyle(nc).width;
@@ -104,11 +110,11 @@ window.addEventListener("DOMContentLoaded", () => {
                     updatePage(data.next.container, data.trigger);
                 },
                 enter(data) {
-                    var cc = data.current.container;
-                    var nc = data.next.container;
-                    var ccs = cc.style;
-                    var ncs = nc.style;
-                    var pem = cc.parentElement;
+                    const cc = data.current.container;
+                    const nc = data.next.container;
+                    const ccs = cc.style;
+                    const ncs = nc.style;
+                    const pem = cc.parentElement;
                     ncs.display = "";
                     switch (data.trigger) {
                         case "back":
@@ -149,7 +155,26 @@ window.addEventListener("DOMContentLoaded", () => {
                                     scrollTo: g_y.to,
                                     delay: 0.05,
                                     duration: 0.25,
-                                    onupdate: function () {},
+                                }
+                            );
+                            gsap.fromTo(
+                                cc,
+                                { y: 0 },
+                                {
+                                    y: g_y.to - g_y.from,
+                                    delay: 0.05,
+                                    duration: 0.25,
+                                }
+                            );
+                            console.log(g_y)
+                            // nc.style.visibility = "hidden";
+                            gsap.fromTo(
+                                nc,
+                                { y: g_y.from - g_y.to },
+                                {
+                                    y: 0,
+                                    delay: 0.05,
+                                    duration: 0.25,
                                 }
                             );
                             return gsap.fromTo(

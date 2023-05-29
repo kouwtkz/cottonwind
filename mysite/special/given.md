@@ -1,14 +1,12 @@
 ---
 layout: /page/artPage.pug
-type: "art-list"
+type: art-list
 section: special
 title: "頂いたファンアート"
 description: "#わたかぜメ絵"
-dir: "/images"
-maxView: 0x1000
+flags:
+  moreLink: false
 index: 1
-en:
-  title: "GIVEN FANART"
 tags:
   - special
   - special-page

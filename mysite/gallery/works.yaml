@@ -1,11 +1,11 @@
 layout: /page/artPage.pug
 section: gallery
 type: art-list
-title: ART
+title: WORKS
 index: 1
 flags:
   moreLink: false
 tags:
   - gallery
   - list
-  - art
+  - works

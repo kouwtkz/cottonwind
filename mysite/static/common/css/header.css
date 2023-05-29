@@ -44,6 +44,12 @@ header .MenuButton {
 .MenuButton * {
     transition: 50ms;
 }
+.MenuButton .Fill1 {
+    transition: 200ms;
+}
+.MenuButton:hover .Fill1 {
+    fill: #c7dba0;
+}
 .naviMenu_open .MenuButton .Line1 {
     width: 51.02px;
     transform: translate(-27px, 25px) rotate(-45deg);
