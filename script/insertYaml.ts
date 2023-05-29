@@ -2,7 +2,7 @@ import { ArrayObject } from "https://deno.land/std@0.177.1/encoding/_yaml/utils.
 import { parse, stringify } from 'npm:yaml'
 import { date_format } from "./date_format.ts"
 
-const imageGroups = ["art", "fanart", "given"];
+const imageGroups = ["art", "fanart", "given", "works"];
 const mysiteDir = "../mysite";
 const imageDir = `${mysiteDir}/images`;
 const imageYamlDir = `${mysiteDir}/_data/mediaData/image`;
