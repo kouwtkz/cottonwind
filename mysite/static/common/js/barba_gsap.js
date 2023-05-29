@@ -18,7 +18,12 @@ function allCurrentHrefDelete(doc = document) {
     doc.querySelectorAll(`a[href]`).forEach((l) => {
         var attrHref = l.getAttribute("href");
         if (!attrHref.match(/^\w+:\/\//)) {
-            if (attrHref.match(/^[^?#]*/)[0].match(/[^/]*$/)[0].match(/^[^.]+$/)) {                
+            if (
+                attrHref
+                    .match(/^[^?#]*/)[0]
+                    .match(/[^/]*$/)[0]
+                    .match(/^[^.]+$/)
+            ) {
                 l.href = `${attrHref}/`;
             }
         }
@@ -51,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
                         if (g_y.to < 0) g_y.to = 0;
                     }
                 }
-                return el.classList && el.classList.contains('no-barba')
+                return el.classList && el.classList.contains("no-barba");
             } else {
                 return true;
             }
@@ -81,7 +86,9 @@ window.addEventListener("DOMContentLoaded", () => {
                         selected.classList.remove("selected");
                     }
                     if (location.pathname !== "/") {
-                        let get_section =  `/${data.next.container.dataset.topmenu}` || "location.pathname.match(/.[^/]*/)[0]";
+                        let get_section =
+                            `/${data.next.container.dataset.topmenu}` ||
+                            "location.pathname.match(/.[^/]*/)[0]";
                         let checkSection = sectionTable[get_section.slice(1)];
                         if (checkSection) get_section = `/${checkSection}`;
                         const new_selected = document.querySelector(
@@ -128,7 +135,7 @@ window.addEventListener("DOMContentLoaded", () => {
                             ccs.position = "absolute";
                             ncs.width = g_ncgs.width;
                             ncs.position = "absolute";
-                            pem.style.overflow = "hidden";
+                            // pem.style.overflow = "hidden";
                             if (
                                 !hasFadeDisable &&
                                 data.current.url.path !== data.next.url.path
@@ -148,34 +155,24 @@ window.addEventListener("DOMContentLoaded", () => {
                             } else {
                                 ccs.display = "none";
                             }
+                            scrollDD = {
+                                delay: 0.05,
+                                duration: 0.25,
+                            };
                             gsap.fromTo(
                                 window,
                                 { scrollTo: g_y.from },
-                                {
-                                    scrollTo: g_y.to,
-                                    delay: 0.05,
-                                    duration: 0.25,
-                                }
+                                { ...{ scrollTo: g_y.to }, ...scrollDD }
                             );
                             gsap.fromTo(
                                 cc,
                                 { y: 0 },
-                                {
-                                    y: g_y.to - g_y.from,
-                                    delay: 0.05,
-                                    duration: 0.25,
-                                }
+                                { ...{ y: g_y.to - g_y.from }, ...scrollDD }
                             );
-                            console.log(g_y)
-                            // nc.style.visibility = "hidden";
                             gsap.fromTo(
                                 nc,
                                 { y: g_y.from - g_y.to },
-                                {
-                                    y: 0,
-                                    delay: 0.05,
-                                    duration: 0.25,
-                                }
+                                { ...{ y: 0 }, ...scrollDD }
                             );
                             return gsap.fromTo(
                                 pem,

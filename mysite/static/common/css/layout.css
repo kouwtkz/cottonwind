@@ -124,7 +124,7 @@ main {
 
 #mainarea {
     padding-bottom: 4vh;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 #content {
