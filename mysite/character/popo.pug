@@ -16,8 +16,8 @@ include ../_includes/components/gallery.pug
 h1 #{title}
 h3 #{description}
 
-img(src="/images/main/けだまっこポポ.png" style={"width": "100%"})
+img(src="/images/art/けだまっこポポ.png" style={"width": "100%"})
 p
 .gallery
   h2 RECENTLY ART
-  +galleryList({dir: "/images/main", max: 20, list: (mediaData.image.main.list.filter((e)=>e.tags.findIndex(e=>e==tag)>=0))})
+  +galleryList({dir: "/images/art", max: 20, list: (mediaData.image.main.list.filter((e)=>e.tags.findIndex(e=>e==tag)>=0))})

@@ -3,7 +3,7 @@ layout: /page/default.pug
 section: character
 title: "コモ"
 description: "蚕の虫人、もこもこしている"
-image: "/images/main/えへんと胸をはるコモくん.png"
+image: "/images/art/えへんと胸をはるコモくん.png"
 index: 2
 tag: como
 tags:
@@ -36,4 +36,4 @@ p
 p
 .gallery
   h2 RECENTLY ART
-  +galleryList({dir: "/images/main", max: 20, list: (mediaData.image.main.list.filter((e)=>e.tags.findIndex(e=>e==tag)>=0))})
+  +galleryList({dir: "/images/art", max: 20, list: (mediaData.image.main.list.filter((e)=>e.tags.findIndex(e=>e==tag)>=0))})

@@ -3,7 +3,7 @@ layout: /page/default.pug
 section: character
 title: "フロン"
 description: "寒いところが好きなおばけ"
-image: "/images/main/フロンくん2022.png"
+image: "/images/art/フロンくん2022.png"
 index: 4
 tag: floan
 tags:
@@ -20,4 +20,4 @@ img.iconL(src=`${image}` style={"border-radius": "8px"})
 p
 .gallery
   h2 RECENTLY ART
-  +galleryList({dir: "/images/main", max: 20, list: (mediaData.image.main.list.filter((e)=>e.tags.findIndex(e=>e==tag)>=0))})
+  +galleryList({dir: "/images/art", max: 20, list: (mediaData.image.main.list.filter((e)=>e.tags.findIndex(e=>e==tag)>=0))})

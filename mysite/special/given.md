@@ -12,6 +12,7 @@ en:
 tags:
   - special
   - special-page
+  - given-art
   - gallery
   - list
 ---
