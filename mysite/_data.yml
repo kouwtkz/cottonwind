@@ -39,8 +39,8 @@ menu:
   main:
     - name: 'about'
       url: '/about/'
-    - name: 'art'
-      url: '/art/'
+    - name: 'gallery'
+      url: '/gallery/'
     - name: 'character'
       short: 'chara'
       url: '/character/'
