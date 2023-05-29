@@ -9,7 +9,7 @@ tags:
 - let pages = Array.from(search.pages("character introduction"));
 - pages = pages.map((item)=>{return item.data}).sort((a,b)=>a.index-b.index);
 h1 #{section}
-h2 わたかぜワールドのあるじ
+h2 わたかぜっこのあるじ
 - let CharList = pages.concat();
 .list.flex
   each item in CharList.filter(v=>v.tags.indexOf('myself')>=0)
@@ -20,7 +20,7 @@ h2 わたかぜワールドのあるじ
           h2 #{item.title}
       h3 #{item.description}
 - CharList = CharList.filter(v=>v.tags.indexOf('myself')<0);
-h2 わたかぜワールドのキャラクター
+h2 わたかぜっこのみんな
 .list.flex
   each item in CharList
     div
