@@ -9,8 +9,10 @@ function copyStatic(cur: string) {
         if (item.isFile) {
             await Deno.copyFile(itemPath, outputPath);
         } else if (item.isDirectory) {
-            await Deno.mkdir(outputPath).catch(()=>{});
-            copyStatic(itemPath);
+            if (!/^\./.test(item.name)) {
+                await Deno.mkdir(outputPath).catch(()=>{});
+                copyStatic(itemPath);
+            }
         }
     })
 }
