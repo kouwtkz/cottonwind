@@ -1,0 +1,16 @@
+layout: /page/artPage.pug
+section: gallery
+type: "art-list"
+childList:
+  -
+    name: works
+    path: /gallery/works
+    max: 20
+  -
+    name: art
+    path: /gallery/art
+    max: 20
+  -
+    name: fanart
+    path: /gallery/fanart
+    max: 4
