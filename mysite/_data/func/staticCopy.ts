@@ -1,4 +1,4 @@
-const staticPath = "_static";
+export const staticPath = "_static";
 const sitePath = "_site";
 await Deno.mkdir(sitePath).catch(()=>{});
 function copyStatic(cur: string) {
@@ -9,7 +9,7 @@ function copyStatic(cur: string) {
         if (item.isFile) {
             await Deno.copyFile(itemPath, outputPath);
         } else if (item.isDirectory) {
-            if (!/^\./.test(item.name)) {
+            if (!/^[._]/.test(item.name)) {
                 await Deno.mkdir(outputPath).catch(()=>{});
                 copyStatic(itemPath);
             }
@@ -17,4 +17,4 @@ function copyStatic(cur: string) {
     })
 }
 await copyStatic(staticPath);
-console.log("Copy finished static files.")
+console.log(`Copy finished ${staticPath} files.`)

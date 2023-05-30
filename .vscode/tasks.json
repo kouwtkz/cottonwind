@@ -23,15 +23,21 @@
             "command": "cd mysite; deno task lume -s"
         },
         {
+            "label": "upgrade",
+            "detail": "Lumeのアップグレード",
+            "type": "shell",
+            "command": "cd mysite; deno task lume upgrade"
+        },
+        {
             "type": "shell",
             "command": "cd mysite/_site; node D:/Application/node/wsv.js ./ 3000",
             "label": "view"
         },
         {
-            "label": "insert",
-            "detail": "管理",
+            "label": "update",
+            "detail": "Yaml管理",
             "type": "shell",
-            "command": "cd script; deno run --allow-env --allow-read --allow-write ./insertYaml.ts"
+            "command": "cd script; deno run --allow-env --allow-read --allow-write ./updateGalleryYaml.ts"
         },
         {
             "label": "init",

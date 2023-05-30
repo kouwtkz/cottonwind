@@ -1,4 +1,9 @@
 title: works
 path: /images/works
-timeFormat: Y-m-d H:i
-list: []
+list:
+  - src: halloween2022_to_Elegy.png
+    time: 2022-10-15 18:47:49
+    title: halloween2022_to_Elegy
+    description: ""
+    tags:
+      - works

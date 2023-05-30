@@ -40,9 +40,11 @@ function getFileList(cur: string) {
             const outputPath = sitePath + outputUrl;
             const cacheOutPath = cachePath + thumbnailUrl;
             if (item.isDirectory) {
-                try { Deno.mkdirSync(outputPath) } catch (e) { };
-                try { Deno.mkdirSync(cacheOutPath) } catch (e) { };
-                _getFileList(itemPath);
+                if (!/^[._]/.test(item.name)) {
+                    try { Deno.mkdirSync(outputPath) } catch (e) { };
+                    try { Deno.mkdirSync(cacheOutPath) } catch (e) { };
+                    _getFileList(itemPath);
+                }
             } else {
                 if (/(png|jpg|jpeg)$/i.test(imageName)) {
                     list.push({ itemPath, itemFullPath, imageName, imageUrl, thumbnailUrl, outputUrl, outputPath, cacheOutPath });
@@ -54,8 +56,8 @@ function getFileList(cur: string) {
     return list;
 }
 const list = getFileList(staticPath + imageRoot);
-const max = list.length;
-let i = 0;
+// const max = list.length;
+// let i = 0;
 list.forEach(async (item) => {
     const fileStat = Deno.statSync(item.itemPath);
     const mtime = fileStat.mtime?.getTime();
@@ -87,5 +89,26 @@ list.forEach(async (item) => {
 })
 Deno.writeTextFile(cacheJsonPath, JSON.stringify(Object.fromEntries(mapOutCache)));
 mapCache.forEach((item) => { Deno.remove(item.path).catch(() => { }) });
+
+// 余分な空きフォルダの削除
+function removeBlankDir(cur: string) {
+    const list = Array.from(Deno.readDirSync(cur));
+    const l = list.length;
+    let i = 0;
+    if (l > 0) {
+        list.forEach((item: any) => {
+            const itemPath = `${cur}/${item.name}`;
+            if (item.isDirectory) {
+                i += removeBlankDir(itemPath) ? 1 : 0;
+            }
+        })
+    } else {
+        try { Deno.removeSync(cur) } catch (e) { };
+        return true;
+    }
+    if (i === l) try { Deno.removeSync(cur); return true; } catch (e) { };
+    return false;
+}
+removeBlankDir(cachePath + thumbnailRoot);
 
 export { mapList };

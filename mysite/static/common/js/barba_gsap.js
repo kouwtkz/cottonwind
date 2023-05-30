@@ -53,7 +53,11 @@ window.addEventListener("DOMContentLoaded", () => {
                     const groupEl = document.querySelector(el.dataset.barbaToY);
                     if (groupEl) {
                         g_y.to = window.scrollY - groupEl.offsetTop;
-                        if (g_y.to < 0) g_y.to = 0;
+                        if (g_y.to < 0) {
+                            g_y.to = 0;
+                        } else {
+                            hasFadeDisable = true;
+                        }
                     }
                 }
                 return el.classList && el.classList.contains("no-barba");
