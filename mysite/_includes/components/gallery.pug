@@ -1,0 +1,38 @@
+mixin gallery(options)
+  .gallery
+    +galleryList(options)
+mixin galleryList(options = {})
+  - const obj = options.obj || { list: [], path: '' }
+  - const list = (options.list || obj.list || []).filter(e => !e.hidden);
+  - const dir = options.dir || obj.path || '';
+  - const timeReplace = options.timeReplace || obj.timeReplace || '';
+  - const timeFormat = options.timeFormat || obj.timeFormat || 'Y-m-d H:i:s';
+  - const grp = options.grp || { max: 500, path: '' }
+  - const flags = {...(grp.flags || {}), ...(options.flags || {})};
+  - const moreLink = (flags.moreLink === undefined ? true : flags.moreLink) ? (options.moreLink || grp.path || '') : '';
+  - const autoArchive = flags.autoArchive || false;
+  - const moreLinkFlag = moreLink !== '';
+  - const max = options.max || grp.max || 500;
+  - const loopList = list.splice(0, max - ((moreLinkFlag && list.length > max) ? 1 : 0));
+  if (autoArchive && obj.path)
+    - const staticPath = func.staticCopy.staticPath;
+    - const objPath = `./${staticPath}${obj.path}`;
+    - const archivePath = `${objPath}/.archive`;
+    - try {Deno.mkdirSync(archivePath) } catch (e) { };
+    each item in list
+      - try { Deno.renameSync(`${objPath}/${item.src}`, `${archivePath}/${item.src}`) } catch(e) { }
+  - const loopListClass = [];
+  - if (loopList.length < 4) loopListClass.push("center");
+  .list(data-max=`${max}` class=loopListClass)
+    each item, i in loopList
+      - const src = `${dir}/${item.src}`;
+      - let timeStr = func.date_format(timeFormat, item.time, true);
+      - if (timeReplace) timeStr = timeStr.replace(/^(.+)$/, timeReplace);
+      .cell
+        a(href=`#${encodeURI(src)}`)
+          img(src=`${func.thumbnail.mapList.get(src)||src}` alt=`${item.name||item.src}` data-title=`${item.title||item.src}`
+            data-description=`${filters.md(item.description||'')}` data-date=`${timeStr}` data-link=`${item.link||''}`)
+    if moreLinkFlag && list.length > max
+      .cell.more
+        a(href=`${moreLink}` data-barba-to-y=`.group.${grp.name||options.name||''}`)
+          != func.svgData.mapList.get(`${func.svgData.path}/more_button.svg`)

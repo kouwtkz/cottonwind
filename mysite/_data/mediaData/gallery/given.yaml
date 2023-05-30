@@ -1,0 +1,69 @@
+title: given fanart
+path: /images/given
+timeFormat: Y-m-d H:i
+list:
+  - src: むらたむうたさんから！2023-4-16.jpg
+    time: 2023-04-16 19:02:00
+    title: むらたむうたさんから！その2
+    description: |-
+      わたかぜくんとナヒーダちゃんを描いてくれました！
+      ぐるぐるおめめがとってもキュートめぇ！
+      ナヒーダちゃん引きたかった・・・！
+      かわいいイラストありがとうございました！🐏
+    link: https://twitter.com/Vrapeco_kirin/status/1647540972220448770
+    tags:
+      - given
+  - src: ノヴィさんから！2022-12-22.jpg
+    time: 2022-12-22 02:05:00
+    title: ノヴィさんから！
+    description: |-
+      誕生日のお祝いに描いてくれました！
+      クラッカー🎉バックに嬉しそうにウィンクしているわたかぜくんがとてもかわいいです！
+      何よりもお誕生日に描いてくれたことが本当にうれしいです！ありがとうございます…！
+    link: https://twitter.com/nova_kirvee/status/1605610351659454465
+    tags:
+      - given
+  - src: むらたむうたさんから！2022-11-1.jpg
+    time: 2022-11-01 20:22:00
+    title: むらたむうたさんから！
+    description: |-
+      わたかぜくんがパンツを履いたイラストを描いてくれました！
+      良い感じに柄がかわいらしくてぼくらしくて嬉しいです！
+      にあってる？どや！みたいな表情もとてもかわいいです！
+      もふもふの表現もとても良くて素敵なイラストありがとめぇ！🐏
+    link: https://twitter.com/Vrapeco_kirin/status/1587404660528357376
+    tags:
+      - given
+  - src: ぽへもちさんから！2022-10-3_2.jpg
+    time: 2022-10-03 14:21:00
+    title: ぽへもちさんから！
+    link: https://twitter.com/pohemochi_00/status/1576804627991101440
+    description: >-
+      もふもふな[妖精のもふぅ](https://twitter.com/fairy_mofu){target=_blank}ちゃんと一緒に描いてくれました！
+
+      ふわふわ優しい緑色の空間でとてもかわいいです・・・！
+
+      アニメーションで動くかわいい二人を描いてくれてありがとうございました！
+    tags:
+      - given
+  - src: Raigoさんから！2022-3-26.jpg
+    hidden: true
+    comment: アカウントが消えちゃったのでいったん非表示
+    time: 2022-03-26 21:28:00
+    title: Raigoさんから！
+    description: |-
+      うちよそな絵を描いていただきました！
+      空の上でふわふわしてる様子がとてもかわいいです！
+    link: https://twitter.com/raigo09059/status/1507696098479321094
+    tags:
+      - given
+  - src: はちろさんから！2022-3-9.jpg
+    time: 2022-03-09 23:15:00
+    title: はちろさんから！
+    description: |-
+      最初のお試しお絵描き配信の様子を描いていただきました！
+      めぇめぇ走るひつじ🐏にネコの箱の絵文字、コントローラーなど色々と細かく拾ってくれてるの嬉しいです！
+      応援メッセージもありがとうございました！
+    link: https://twitter.com/chiro1SK/status/1501562406023024642
+    tags:
+      - given
