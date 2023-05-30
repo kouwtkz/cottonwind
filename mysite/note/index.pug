@@ -1,0 +1,13 @@
+---
+layout: /page/default.pug
+title: Note
+section: other
+---
+h1 ブログなどの予定
+.flex.center
+  - let pages = Array.from(search.pages("note category list"));
+  - pages = pages.map((item)=>{return item.data}).sort((a,b)=>a.index-b.index);
+  each item in pages
+    div
+      h2.lulo
+        a(href=`${item.url}`) #{item.title.toUpperCase()}

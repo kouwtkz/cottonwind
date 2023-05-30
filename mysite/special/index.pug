@@ -1,0 +1,17 @@
+---
+layout: /page/default.pug
+type: "list"
+tags:
+  - sitemap
+---
+
+h1 Special page
+
+.list.flex
+  - let pages = Array.from(search.pages("special-page"));
+  - pages = pages.map((item)=>{return item.data}).sort((a,b)=>a.index-b.index);
+  each item in pages
+    div
+      a(href=`${item.url}`)
+        h2 #{item.title}
+      h3 #{item.description}

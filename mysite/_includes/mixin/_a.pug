@@ -1,0 +1,5 @@
+mixin a(link, name)
+  a(href=`${link}` target=`${/^http/.test(link)?'_blank':''}`) #{name||link}
+- function a(link, name) {
+-   return `<a href=${link} target=${/^http/.test(link)?'_blank':''}>${name||link}</a>`;
+- }

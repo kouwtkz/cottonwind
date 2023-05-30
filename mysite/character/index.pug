@@ -1,0 +1,31 @@
+---
+layout: /page/default.pug
+section: character
+type: "list"
+tags:
+  - sitemap
+---
+
+- let pages = Array.from(search.pages("character introduction"));
+- pages = pages.map((item)=>{return item.data}).sort((a,b)=>a.index-b.index);
+h1 #{section}
+h2 わたかぜっこのあるじ
+- let CharList = pages.concat();
+.list.flex
+  each item in CharList.filter(v=>v.tags.indexOf('myself')>=0)
+    div
+      a(href=`${item.url}`)
+        div
+          img.iconM(src=`${func.thumbnail.mapList.get(item.image)||item.image}`)
+          h2 #{item.title}
+      h3 #{item.description}
+- CharList = CharList.filter(v=>v.tags.indexOf('myself')<0);
+h2 わたかぜっこのみんな
+.list.flex
+  each item in CharList
+    div
+      a(href=`${item.url}`)
+        div
+          img.iconM(src=`${func.thumbnail.mapList.get(item.image)||item.image}`)
+          h2 #{item.title}
+      h3 #{item.description}
