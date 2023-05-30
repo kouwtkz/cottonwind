@@ -1,9 +1,0 @@
-footer
-  p © #{author.since}-#{new Date().getFullYear()} #{author.ename}
-  p
-    each item in menu.sns
-      - const svg = func.svgData.mapList.get(`${func.svgData.path}/${item.svg}.svg`)
-      if /^http/.test(item.url)
-        a.button(href=`${item.url}` target="_blank") !{svg}
-      else
-        a.button(href=`${item.url}`) !{svg}
