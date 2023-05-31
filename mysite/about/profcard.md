@@ -8,7 +8,7 @@ flags:
 tags:
   - sitemap
 ---
-# ($.author.name)
+# ($.site.author.name)
 ### 草タイプのもふもふが大好きな絵描きです！
 
 

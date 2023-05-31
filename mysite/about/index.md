@@ -11,14 +11,14 @@ tags:
 
 # PROFILE
 
-## ($.author.name)
-### ($.author.ename)
+## ($.site.author.name)
+### ($.site.author.ename)
 
 ![](($.image)){.iconL}{style=border-radius:100px}
 
 <br>
 
-[@($.author.twitter.account)](https://twitter.com/($.author.twitter.account)){target="_blank"}
+[@($.site.author.twitter.account)](https://twitter.com/($.site.author.twitter.account)){target="_blank"}
 
 もふもふなキャラでほわほわした絵を描いてます！
 

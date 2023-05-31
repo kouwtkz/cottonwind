@@ -4,7 +4,7 @@ header
       .logo #{site.title}
     != func.svgData.mapList.get(`${func.svgData.path}/menu_button.svg`)
   .menu
-    each item in menu.main
+    each item in site.menu.main
       //- PageSectionと同じでなければselectedは付与しない
       a(href=`${item.url}`)
         .navi(class=`${pageSection==item.name?'selected':''}`) #{(item.short || item.name).toUpperCase()}

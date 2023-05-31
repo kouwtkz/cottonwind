@@ -8,19 +8,19 @@
             "label": "deploy",
             "detail": "ビルド＆Firebaseへデプロイする",
             "type": "shell",
-            "command": "cd mysite; deno task lume --location https://kouwtkz-site.web.app; firebase deploy"
+            "command": "cd script; deno run --allow-env --allow-read --allow-write ./updateGalleryYaml.ts; cd ../mysite; deno task lume --location https://kouwtkz-site.web.app; firebase deploy"
         },
         {
             "label": "build",
             "detail": "ビルドする",
             "type": "shell",
-            "command": "cd mysite; deno task lume --location https://kouwtkz-site.web.app"
+            "command": "cd script; deno run --allow-env --allow-read --allow-write ./updateGalleryYaml.ts; cd ../mysite; deno task lume --location https://kouwtkz-site.web.app"
         },
         {
             "label": "start",
             "detail": "デバッグする",
             "type": "shell",
-            "command": "cd mysite; deno task lume -s"
+            "command": "cd script; deno run --allow-env --allow-read --allow-write ./updateGalleryYaml.ts; cd ../mysite; deno task lume -s"
         },
         {
             "label": "upgrade",

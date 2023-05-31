@@ -14,7 +14,7 @@ tags:
 
 ## 連絡先
 メールアドレスはこちらです！  
-($.author.smail) \
+($.site.author.smail) \
 （🐏を@に変えてください）
 
 
@@ -24,7 +24,7 @@ tags:
 - 有償依頼について
   
   個人の方は[Skeb](https://skeb.jp/@kouwtkz)か[Pixivリクエスト](https://www.pixiv.net/users/5577703/request)にて受け付けてます！  
-  法人あるいは個人の方でも細かい依頼をしたい方は上記メールアドレスか[TwitterのDM](https://twitter.com/($.author.twitter.account)){target="_blank"}か下記フォームにてよろしくおねがいします！
+  法人あるいは個人の方でも細かい依頼をしたい方は上記メールアドレスか[TwitterのDM](https://twitter.com/($.site.author.twitter.account)){target="_blank"}か下記フォームにてよろしくおねがいします！
 
 - 受付可能な依頼について
   
