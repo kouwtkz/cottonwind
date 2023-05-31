@@ -1,0 +1,88 @@
+main #content {
+    display: table;
+    min-height: 52vh;
+    width: 100%;
+}
+h1 > p {
+    margin: 10px auto;
+    display: inline-block;
+}
+.home h1 {
+    margin-top: 40px;
+    margin-bottom: 0;
+}
+h1,
+.lulo {
+    font-family: "LuloCleanW01-OneBold", sans-serif;
+}
+.about #content > ul > li {
+    margin-bottom: 16px;
+}
+.markdown.app ul {
+    min-width: 260px;
+    padding-left: 0;
+}
+.markdown.app li {
+    display: block;
+    margin-bottom: 12px;
+}
+.markdown.app li a {
+    margin: 0;
+    display: inline-block;
+    background-color: var(--main-color-soft);
+    color: white;
+    border-radius: 0px 10px 10px 0px;
+    padding: 0.4em 1.2em 0.4em 1em;
+    font-size: 1.6em;
+    line-height: 1em;
+    border-left: solid 12px var(--main-color);
+    text-decoration: none;
+}
+.markdown.app li a:hover {
+    background-color: var(--main-color-pale);
+}
+.article.header {
+    margin: 2em auto;
+}
+.list.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-evenly;
+}
+.list.flex div {
+    margin: 8px 16px;
+}
+.list.flex a {
+    text-decoration: none;
+}
+.list.flex a:hover * {
+    color: var(--main-color-soft);
+}
+.markdown {
+    margin: auto;
+    width: 100%;
+}
+.markdown.column,
+.markdown.article {
+    width: 70%;
+}
+.markdown.art-list {
+    width: 99%;
+}
+@media screen and (max-width: 800px) {
+    main {
+        margin-top: 0;
+    }
+    main #content {
+        min-height: 62vh;
+    }
+    .markdown.column,
+    .markdown.article {
+        width: 99%;
+    }
+    .list.flex {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,7 @@
+- function _objgt(o,s) {s.split(/[.\[]/).forEach(e=>{const m=e.match(/^(\d+)\]$/); if(typeof(o)==='object')o=o[m?Number(m[1]):e];});return o;}
+- function customFilter(md) {
+-   const _f = flags ? flags : { autoLink: false, variable: false };
+-   if (_f.autoLink) md = md.replace(/(<[^a]\S[^>]*>[^<]*)(http\w+[^\s<]+)/g, `$1<a href="$2" target="_blank">$2</a>`);
+-   if (_f.variable) md = md.replace(/(\(\s*\$.)([\w.\[\]]+)(\s*\))/g, (m,m1,m2)=>{ return _objgt(page.data,m2) })
+-   return md;
+- }

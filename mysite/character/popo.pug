@@ -1,0 +1,23 @@
+---
+layout: /page/default.pug
+section: character
+title: ポポ
+description: ふわふわななにか
+image: "/images/character/けだまっこポポ_紹介.png"
+index: 3
+tag: popo
+tags:
+  - character
+  - introduction
+  - popo
+---
+include ../_includes/components/gallery.pug
+
+h1 #{title}
+h3 #{description}
+
+img(src="/images/art/けだまっこポポ.png" style={"width": "100%"})
+p
+.gallery
+  h2 RECENTLY ART
+  +galleryList({dir: "/images/art", max: 20, list: (mediaData.gallery.art.list.filter((e)=>e.tags.findIndex(e=>e==tag)>=0))})
