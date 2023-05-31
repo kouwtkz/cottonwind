@@ -1,7 +1,7 @@
 function getAMPM(d: Date, utc = false) {
     return (utc ? d.getUTCHours() : d.getHours()) / 12 < 1 ? 0 : 1;
 }
-export function date_format(format_str: string, date = new Date(), utc = false) {
+export default function date_format(format_str: string, date = new Date(), utc = false) {
     const d = typeof date === "object" ? date : new Date(date);
     return format_str.replace(
         /Y|y|n|m|j|d|w|WW|G|g|H|h|AA|I|i|S|s|L|l|A|a|W/g,

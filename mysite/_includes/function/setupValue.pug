@@ -1,3 +1,3 @@
-- const setupSound = page.data.setupSound || (() => { try{ return mediaData.sound.music.list.filter(e=>e.setup)[0].src; } catch { return mediaData.sound.music.list[0].src } })();
+- const setupSound = page.data.setupSound || mediaData.sound.music.setupSound;
 - const pageSection = `${section || title || url.match(/\/([^/]*)/)[1]}`
 - const pageTitle = page.src.path.match(/^\/index$/) ? `${site.title} - ${site.short.description}` : `${title ? `${title} - ` : ''}${pageSection.toUpperCase()} | ${site.title}`;

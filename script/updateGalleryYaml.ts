@@ -1,5 +1,5 @@
 import { parse, stringify } from 'npm:yaml'
-import { date_format } from "./date_format.ts"
+import date_format from "./date_format.ts"
 
 const imageGroups = [
     "art",
