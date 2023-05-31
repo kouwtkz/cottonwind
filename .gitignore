@@ -4,8 +4,8 @@ _site/
 */_static/images
 */_static/music
 
-# _data内にあるデータもGitに反映しないようにする
-*/_data/**/*.yaml
+# _data内にある一部のデータをGitに反映しないようにする
+*/_data/mediaData/*.yaml
 
 # Deno
 deno.lock
