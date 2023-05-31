@@ -66,9 +66,13 @@
     transition: border-left-color 2s;
 }
 .audio.button .loop {
-    opacity: 0.5;
+    opacity: 0.75;
 }
 .audio_loop .audio.button .loop {
+    opacity: 1;
+}
+.audio_loop .audio.button .loop .loopOff {
+    visibility: hidden;
     opacity: 1;
 }
 header .background {
