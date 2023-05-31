@@ -168,16 +168,18 @@ window.addEventListener("DOMContentLoaded", () => {
                                 { scrollTo: g_y.from },
                                 { ...{ scrollTo: g_y.to }, ...scrollDD }
                             );
-                            gsap.fromTo(
-                                cc,
-                                { y: 0 },
-                                { ...{ y: g_y.to - g_y.from }, ...scrollDD }
-                            );
-                            gsap.fromTo(
-                                nc,
-                                { y: g_y.from - g_y.to },
-                                { ...{ y: 0 }, ...scrollDD }
-                            );
+                            if (hasFadeDisable) {
+                                gsap.fromTo(
+                                    cc,
+                                    { y: 0 },
+                                    { ...{ y: g_y.to - g_y.from }, ...scrollDD }
+                                );
+                                gsap.fromTo(
+                                    nc,
+                                    { y: g_y.from - g_y.to },
+                                    { ...{ y: 0 }, ...scrollDD }
+                                );
+                            }
                             return gsap.fromTo(
                                 pem,
                                 {
