@@ -5,9 +5,6 @@ maxView: 256
 description: '『わたかぜコウ』のポートフォリオサイト。気まぐれに様々なイラストや作品を載せてます。'
 short:
   description: 'わたかぜコウのポートフォリオサイト'
-icon:
-  path: '/icons/icon.png'
-  size: ['48x48', '180x180', '192x192', '256x256', '512x512']
 manifest:
   background_color: "#c1d64c"
   path: '/manifest.json'
