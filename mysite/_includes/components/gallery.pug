@@ -15,8 +15,7 @@ mixin galleryList(options = {})
   - const max = options.max || grp.max || 500;
   - const loopList = list.splice(0, max - ((moreLinkFlag && list.length > max) ? 1 : 0));
   if (autoArchive && obj.path)
-    - const staticPath = func.staticCopy.staticPath;
-    - const objPath = `./${staticPath}${obj.path}`;
+    - const objPath = `./${mediaData.path}/${obj.path}`;
     - const archivePath = `${objPath}/.archive`;
     - try {Deno.mkdirSync(archivePath) } catch (e) { };
     each item in list
@@ -26,13 +25,13 @@ mixin galleryList(options = {})
   .list(data-max=`${max}` class=loopListClass)
     each item, i in loopList
       - const src = `${dir}/${item.src}`;
-      - let timeStr = func.date_format(timeFormat, item.time, true);
+      - let timeStr = date_format(timeFormat, item.time, true);
       - if (timeReplace) timeStr = timeStr.replace(/^(.+)$/, timeReplace);
       .cell
         a(href=`#${encodeURI(src)}`)
-          img(src=`${func.thumbnail.mapList.get(src)||src}` alt=`${item.name||item.src}` data-title=`${item.title||item.src}`
+          img(src=`${thumbnail.mapList.get(src)||src}` alt=`${item.name||item.src}` data-title=`${item.title||item.src}`
             data-description=`${filters.md(item.description||'')}` data-date=`${timeStr}` data-link=`${item.link||''}`)
     if moreLinkFlag && list.length > max
       .cell.more
         a(href=`${moreLink}` data-barba-to-y=`.group.${grp.name||options.name||''}`)
-          != func.svgData.mapList.get(`${func.svgData.path}/more_button.svg`)
+          != svgData.mapList.get(`${svgData.path}/more_button.svg`)

@@ -3,10 +3,10 @@
   script(src='/common/js/audio.js')
   div
     .audio.button.play(onclick='audio_play()')
-      != func.svgData.mapList.get(`${func.svgData.path}/audio/play.svg`)
-      != func.svgData.mapList.get(`${func.svgData.path}/audio/pause.svg`)
+      != svgData.mapList.get(`${svgData.path}/audio/play.svg`)
+      != svgData.mapList.get(`${svgData.path}/audio/pause.svg`)
     .audio.button.stop(onclick='audio_stop()')
-      != func.svgData.mapList.get(`${func.svgData.path}/audio/stop.svg`)
+      != svgData.mapList.get(`${svgData.path}/audio/stop.svg`)
     .audio.button.loop(onclick='audio_loop()')
-      != func.svgData.mapList.get(`${func.svgData.path}/audio/loop.svg`)
+      != svgData.mapList.get(`${svgData.path}/audio/loop.svg`)
 #audio_background
