@@ -33,6 +33,7 @@ async function getParsedData(path: string) {
                             }));
                             break;
                         case "yaml":
+                        case "yml":
                             runList.push(Deno.readTextFile(filePath).then((str) => {
                                 dicUpdate(baseName, parse(str));
                             }));
