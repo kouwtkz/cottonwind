@@ -1,4 +1,4 @@
-const staticPath = "_static";
+const mediaPath = "_media";
 const sitePath = "_site";
 const cachePath = ".cache";
 
@@ -8,7 +8,7 @@ import jimp from "npm:jimp";
 
 const mapList = new Map();
 const imageRoot = "/images";
-const imagePath = staticPath + imageRoot;
+const imagePath = mediaPath + imageRoot;
 const thumbnailRoot = "/thumbnail";
 const thumbnailImageRoot = imageRoot + thumbnailRoot;
 const lumeRoot = Deno.cwd();
@@ -27,7 +27,7 @@ const mapOutCache = new Map();
 
 console.log(`Making thumbnail..`);
 function getFileList(cur: string) {
-    const list = Array();
+    const list: any = [];
     const _getFileList = (cur: string) => {
         Array.from(Deno.readDirSync(cur)).forEach((item: any) => {
             const itemPath = `${cur}/${item.name}`;
@@ -55,7 +55,7 @@ function getFileList(cur: string) {
     _getFileList(cur);
     return list;
 }
-const list = getFileList(staticPath + imageRoot);
+const list = getFileList(mediaPath + imageRoot);
 // const max = list.length;
 // let i = 0;
 list.forEach(async (item) => {

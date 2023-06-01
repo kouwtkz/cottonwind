@@ -16,9 +16,9 @@ try {
 }
 let manageFileUpdated = false;
 const mysiteDir = "../mysite";
-const staticDir = `${mysiteDir}/_static`;
+const mediaDir = `${mysiteDir}/_media`;
 const imageDir = `/images`;
-const imageYamlDir = `${mysiteDir}/_data/mediaData/gallery`;
+const imageYamlDir = `${mediaDir}/_data/gallery`;
 await Deno.mkdir(imageYamlDir).catch(() => { });
 const imageYamlData = new Map();
 const imageYamlArchiveName = `.archive`;
@@ -59,10 +59,10 @@ imageGroups.forEach((group) => {
 function outReadDirList(cur: string) {
     let list: any = [];
     try {
-        const staticCur = `${staticDir}/${cur}`
+        const staticCur = `${mediaDir}/${cur}`
         Array.from(Deno.readDirSync(staticCur)).forEach((item: any) => {
             const curPath = `${cur}/${item.name}`;
-            const staticCurPath = `${staticDir}/${curPath}`
+            const staticCurPath = `${mediaDir}/${curPath}`
             if (item.isFile) {
                 const stat = Deno.statSync(staticCurPath);
                 list.push({ ...item, ...{ dir: cur, mtime: new Date(<string>(stat.mtime || '')) } })

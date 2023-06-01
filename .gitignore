@@ -1,11 +1,11 @@
-# PublicはGitに反映しないようにする
+# StaticはGitに反映しないようにする
 _site/
 */_static/app
-*/_static/images
-*/_static/music
 
-# _data内にある一部のデータをGitに反映しないようにする
-*/_data/mediaData/**/*.yaml
+# 頻繁に変えるメディアは反映しない
+*/_media/images
+*/_media/music
+*/_media/_data/**/*.yaml
 
 # Deno
 deno.lock
