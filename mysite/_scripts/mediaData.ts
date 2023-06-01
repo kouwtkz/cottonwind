@@ -1,6 +1,6 @@
 export const mediaPath = "_media";
 const sitePath = "_site";
-await Deno.mkdir(sitePath).catch(()=>{});
+Deno.mkdir(sitePath).catch(()=>{});
 function copyStatic(cur: string) {
     // deno-lint-ignore no-explicit-any
     Array.from(Deno.readDirSync(cur)).forEach(async (item: any) => {
