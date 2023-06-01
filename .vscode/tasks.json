@@ -5,22 +5,34 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "deploy",
-            "detail": "ビルド＆Firebaseへデプロイする",
+            "label": "update",
+            "detail": "Yaml管理",
             "type": "shell",
-            "command": "cd script; deno run --allow-env --allow-read --allow-write ./updateGalleryYaml.ts; cd ../mysite; deno task lume --location https://kouwtkz-site.web.app; firebase deploy"
+            "command": "cd script; deno run --allow-env --allow-read --allow-write ./updateGalleryYaml.ts"
         },
         {
             "label": "build",
             "detail": "ビルドする",
             "type": "shell",
-            "command": "cd script; deno run --allow-env --allow-read --allow-write ./updateGalleryYaml.ts; cd ../mysite; deno task lume --location https://kouwtkz-site.web.app"
+            "command": "cd mysite; deno task lume --location https://kouwtkz-site.web.app",
+            "dependsOrder": "sequence",
+            "dependsOn": ["update"]
+        },
+        {
+            "label": "deploy",
+            "detail": "ビルド＆Firebaseへデプロイする",
+            "type": "shell",
+            "command": "firebase deploy",
+            "dependsOrder": "sequence",
+            "dependsOn": ["build"]
         },
         {
             "label": "start",
             "detail": "デバッグする",
             "type": "shell",
-            "command": "cd script; deno run --allow-env --allow-read --allow-write ./updateGalleryYaml.ts; cd ../mysite; deno task lume -s"
+            "command": "cd mysite; deno task lume -s",
+            "dependsOrder": "sequence",
+            "dependsOn": ["update"]
         },
         {
             "label": "upgrade",
@@ -32,12 +44,6 @@
             "type": "shell",
             "command": "cd mysite/_site; node D:/Application/node/wsv.js ./ 3000",
             "label": "view"
-        },
-        {
-            "label": "update",
-            "detail": "Yaml管理",
-            "type": "shell",
-            "command": "cd script; deno run --allow-env --allow-read --allow-write ./updateGalleryYaml.ts"
         },
         {
             "label": "init",
