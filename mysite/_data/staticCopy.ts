@@ -16,5 +16,5 @@ function copyStatic(cur: string) {
         }
     })
 }
-await copyStatic(staticPath);
+copyStatic(staticPath);
 console.log(`Copy finished ${staticPath} files.`)
