@@ -1,3 +1,5 @@
 import getParsedData from "../script/getParsedData.ts";
-const settingData = await getParsedData("_setting");
-export default settingData;
+import date_format from "../script/date_format.ts"
+const scripts = await getParsedData("_scripts");
+
+export default { ...scripts , ...{ date_format }};

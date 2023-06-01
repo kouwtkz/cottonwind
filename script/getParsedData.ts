@@ -4,6 +4,11 @@ async function getParsedData(path: string) {
     const dic: any = {};
     const dicUpdate = (name: string, data: any) => {
         if (data !== null) {
+            if (data.default) {
+                const _default = data.default;
+                delete data.default;
+                data = { ...data, ..._default };
+            }
             if (dic[name]) {
                 dic[name] = { ...dic[name], ...data };
             } else {

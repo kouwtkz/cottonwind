@@ -16,12 +16,12 @@ function copyStatic(cur: string) {
         }
     })
 }
-await copyStatic(mediaPath);
+copyStatic(mediaPath);
 console.log(`Copy finished ${mediaPath} files.`)
 
 import getParsedData from "../../script/getParsedData.ts"
 
-const dataPath = `${mediaPath}/_data`;"./_data/musicData/sound/.music.yaml";
+const dataPath = `${mediaPath}/_data`;
 const imageDataPath = `${dataPath}/gallery`;
 
 const imageData = await getParsedData(imageDataPath);
