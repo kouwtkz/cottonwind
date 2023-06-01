@@ -1,30 +1,54 @@
 import { parse } from 'npm:yaml'
 
-function getParsedData(cur: string) {
+async function getParsedData(path: string) {
     const dic: any = {};
-    Array.from(Deno.readDirSync(cur)).forEach((item) => {
-        const path = `${cur}/${item.name}`;
+    const dicUpdate = (name, data) => {
+        if (data !== null) {
+            if (dic[name]) {
+                dic[name] = { ...dic[name], ...data };
+            } else {
+                dic[name] = data;
+            }
+        }
+    }
+    const runList: Promise<any>[] = [];
+    Array.from(Deno.readDirSync(path)).forEach((item) => {
+        const filePath = `${path}/${item.name}`;
+        let baseName = '';
         if (item.isDirectory) {
             if (!/^[._]/.test(item.name)) {
-                dic[item.name] = getParsedData(path);
+                baseName = item.name;
+                runList.push(getParsedData(filePath).then((data) => {
+                    dicUpdate(baseName, data);
+                }));
             }
         } else {
             const m = item.name.match(/^(.+)\.([^.]+)$/);
             if (m) {
-                const baseName = m[1];
+                baseName = m[1];
                 const ext = m[2];
-                const readStr = Deno.readTextFileSync(path);
                 switch (ext) {
                     case "json":
-                        dic[baseName] = JSON.parse(readStr);
+                        runList.push(Deno.readTextFile(filePath).then((str) => {
+                            dicUpdate(baseName, JSON.parse(str));
+                        }));
                         break;
                     case "yaml":
-                        dic[baseName] = parse(readStr);
+                        runList.push(Deno.readTextFile(filePath).then((str) => {
+                            dicUpdate(baseName, parse(str));
+                        }));
+                        break;
+                    case "ts":
+                    case "js":
+                        runList.push(import(`file:///${Deno.cwd()}/${filePath}`).then((data) => {
+                            dicUpdate(baseName, { ...data });
+                        }));
                         break;
                 }
             }
         }
     })
+    await Promise.all(runList);
     return dic;
 }
 

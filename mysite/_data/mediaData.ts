@@ -24,10 +24,10 @@ import getParsedData from "../../script/getParsedData.ts"
 const dataPath = `${mediaPath}/_data`;"./_data/musicData/sound/.music.yaml";
 const imageDataPath = `${dataPath}/gallery`;
 
-const imageData = getParsedData(imageDataPath);
+const imageData = await getParsedData(imageDataPath);
 
 const soundDataPath = `${dataPath}/sound`;
-const soundData = getParsedData(soundDataPath);
+const soundData = await getParsedData(soundDataPath);
 const musicData = soundData.music;
 let setupSound = '';
 if (musicData.list) {
