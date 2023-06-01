@@ -2,9 +2,9 @@ import { parse } from 'npm:yaml'
 
 async function getParsedData(path: string) {
     const dic: any = {};
-    const dicUpdate = (name: string, data: any) => {
+    const dicUpdate = (name: string, data: any, merge_default = false) => {
         if (data !== null) {
-            if (data.default) {
+            if (merge_default && data.default) {
                 const _default = data.default;
                 delete data.default;
                 data = { ...data, ..._default };
@@ -46,7 +46,7 @@ async function getParsedData(path: string) {
                         case "ts":
                         case "js":
                             runList.push(import(`file:///${Deno.cwd()}/${filePath}`).then((data) => {
-                                dicUpdate(baseName, { ...data });
+                                dicUpdate(baseName, { ...data }, true);
                             }));
                             break;
                     }
