@@ -2,7 +2,7 @@ import { parse } from 'npm:yaml'
 
 async function getParsedData(path: string) {
     const dic: any = {};
-    const dicUpdate = (name, data) => {
+    const dicUpdate = (name: string, data: any) => {
         if (data !== null) {
             if (dic[name]) {
                 dic[name] = { ...dic[name], ...data };
