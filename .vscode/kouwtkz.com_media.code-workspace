@@ -8,6 +8,7 @@
         }
     ],
     "settings": {
+        "site.url": "https://kouwtkz-site.web.app",
         "deno.unstable": true
     },
     "tasks": {
@@ -23,7 +24,7 @@
                 "label": "build",
                 "detail": "ビルドする",
                 "type": "shell",
-                "command": "cd ../; deno task lume --location https://kouwtkz-site.web.app",
+                "command": "cd ../; deno task lume --location ${config:site.url}",
                 "dependsOrder": "sequence",
                 "dependsOn": ["update"]
             },

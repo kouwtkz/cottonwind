@@ -1,4 +1,5 @@
 {
+    "site.url": "https://kouwtkz-site.web.app",
     "deno.enable": true,
     "deno.unstable": true
 }

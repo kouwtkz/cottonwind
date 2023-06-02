@@ -14,7 +14,7 @@
             "label": "build",
             "detail": "ビルドする",
             "type": "shell",
-            "command": "cd mysite; deno task lume --location https://kouwtkz-site.web.app",
+            "command": "cd mysite; deno task lume --location ${config:site.url}",
             "dependsOrder": "sequence",
             "dependsOn": ["update"]
         },
