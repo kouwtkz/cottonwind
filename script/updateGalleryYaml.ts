@@ -8,7 +8,7 @@ const imageGroups = [
   "works",
 ];
 const manageFilePath = "./updateGallery.json";
-let manageData = <any> null;
+let manageData = <any>null;
 try {
   manageData = JSON.parse(Deno.readTextFileSync(manageFilePath));
 } catch (e) {
@@ -19,11 +19,11 @@ const mysiteDir = "../mysite";
 const mediaDir = `${mysiteDir}/_media`;
 const imageDir = `/images`;
 const imageYamlDir = `${mediaDir}/_data/gallery`;
-await Deno.mkdir(imageYamlDir).catch(() => {});
+await Deno.mkdir(imageYamlDir).catch(() => { });
 const imageYamlData = new Map();
 const imageYamlArchiveName = `.archive`;
 const imageYamlArchiveDir = `${imageYamlDir}/${imageYamlArchiveName}`;
-await Deno.mkdir(imageYamlArchiveDir).catch(() => {});
+await Deno.mkdir(imageYamlArchiveDir).catch(() => { });
 const imageYamlArchiveData = new Map();
 imageGroups.forEach((group) => {
   let path = "";
@@ -60,14 +60,14 @@ function outReadDirList(cur: string) {
   let list: any = [];
   try {
     const staticCur = `${mediaDir}/${cur}`;
-    Array.from(Deno.readDirSync(staticCur)).forEach((item: any) => {
+    Array.from(Deno.readDirSync(staticCur)).forEach((item: Deno.DirEntry) => {
       const curPath = `${cur}/${item.name}`;
       const staticCurPath = `${mediaDir}/${curPath}`;
       if (item.isFile) {
         const stat = Deno.statSync(staticCurPath);
         list.push({
           ...item,
-          ...{ dir: cur, mtime: new Date(<string> (stat.mtime || "")) },
+          ...{ dir: cur, mtime: new Date(<string>(stat.mtime || "")) },
         });
       } else if (item.isDirectory) {
         if (!/^[._]/.test(item.name)) {
@@ -75,13 +75,13 @@ function outReadDirList(cur: string) {
         }
       }
     });
-  } catch (e) {}
+  } catch { }
   return list;
 }
 imageGroups.forEach((group) => {
   const yamlData = imageYamlData.get(group);
   const data = yamlData.data;
-  const preListLength = data.list.length;
+  // const preListLength = data.list.length;
   const newList: any = [];
   const archiveYamlData = imageYamlArchiveData.get(group);
   const archiveData = archiveYamlData.data;
