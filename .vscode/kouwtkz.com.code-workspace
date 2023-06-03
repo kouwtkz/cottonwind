@@ -6,6 +6,6 @@
 	],
 	"settings": {
 		"deno.unstable": true,
-		"deno.enable": false
+		"deno.enable": true
 	}
 }

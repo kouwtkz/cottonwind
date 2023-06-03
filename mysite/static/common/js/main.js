@@ -1,7 +1,7 @@
 function testElm(elm = document) {
   elm.querySelectorAll(`[data-test-elm-write]`).forEach((e) => {
-    var str = e.dataset.testElmWrite;
-    var m = str.match(/\s*([^:\s]+)\s*\:?\s*(\S*)/);
+    const str = e.dataset.testElmWrite;
+    const m = str.match(/\s*([^:\s]+)\s*\:?\s*(\S*)/);
     switch (m[1].toLowerCase()) {
       case "get":
         e.innerHTML = m[2].match(/^(|all)$/)

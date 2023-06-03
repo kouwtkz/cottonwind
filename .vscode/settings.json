@@ -1,5 +1,13 @@
 {
-  "site.url": "https://kouwtkz-site.web.app",
-  "deno.enable": true,
-  "deno.unstable": true
+    "site.url": "https://kouwtkz-site.web.app",
+    "deno.enable": true,
+    "deno.unstable": true,
+    "deno.enablePaths": [
+        "script",
+        "mysite/_config.ts",
+        "mysite/_data.ts",
+        "mysite/_data",
+        "mysite/_scripts",
+        "mysite/_media/_data"
+    ]
 }

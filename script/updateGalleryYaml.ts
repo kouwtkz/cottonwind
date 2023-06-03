@@ -1,3 +1,4 @@
+// deno-lint-ignore-file
 import { parse, stringify } from "npm:yaml";
 import date_format from "./date_format.ts";
 
@@ -56,8 +57,13 @@ imageGroups.forEach((group) => {
 });
 // console.log(imageYamlArchiveData);
 
+interface PlusDirEntry extends Deno.DirEntry {
+  dir: string
+  mtime: Date
+}
+
 function outReadDirList(cur: string) {
-  let list: any = [];
+  let list: PlusDirEntry[] = [];
   try {
     const staticCur = `${mediaDir}/${cur}`;
     Array.from(Deno.readDirSync(staticCur)).forEach((item: Deno.DirEntry) => {
@@ -93,8 +99,8 @@ imageGroups.forEach((group) => {
   let readDirList = null;
   readDirList = outReadDirList(dirPath);
   readDirList.forEach((item) => {
-    const listFindIndex = data.list.findIndex((e) => e.src == item.name);
-    const archiveListFindIndex = archiveData.list.findIndex((e) =>
+    const listFindIndex = data.list.findIndex((e: { src: string; }) => e.src == item.name);
+    const archiveListFindIndex = archiveData.list.findIndex((e: { src: string; }) =>
       e.src == item.name
     );
     const dir = item.dir.replace(dirPath, "");
@@ -130,8 +136,8 @@ imageGroups.forEach((group) => {
   }
   if (updated) {
     data.list = newList
-      .sort((a, b) => (a.time < b.time ? 1 : -1))
-      .map((item) => {
+      .sort((a: { time: number; }, b: { time: number; }) => (a.time < b.time ? 1 : -1))
+      .map((item: { mtime: any; exist: any; dir: any; }) => {
         delete item.mtime;
         delete item.exist;
         if (item.dir === "") delete item.dir;
@@ -144,8 +150,8 @@ imageGroups.forEach((group) => {
   }
   if (updatedArchive) {
     archiveData.list = archiveData.list
-      .sort((a, b) => (a.time < b.time ? 1 : -1))
-      .map((item) => {
+      .sort((a: { time: number; }, b: { time: number; }) => (a.time < b.time ? 1 : -1))
+      .map((item: { mtime: any; exist: any; dir: any; }) => {
         delete item.mtime;
         delete item.exist;
         if (item.dir === "") delete item.dir;

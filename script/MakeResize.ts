@@ -1,3 +1,4 @@
+// deno-lint-ignore-file
 import jimp from "npm:jimp";
 
 export const ResizeNameOption = {
@@ -221,7 +222,7 @@ export class MakeResize {
       const count = index + 1;
       const fileStat = Deno.statSync(item.itemPath);
       const mtime = <number>fileStat.mtime?.getTime();
-      item.output.forEach(async (output, i) => {
+      item.output.forEach(async (output) => {
         const size = output.size;
         this.resizedList.set(output.imageUrlKey, output.outputUrl);
         this.mapOutCache.set(output.imageUrlKey, { mtime: mtime, path: output.cacheOutPath, size });

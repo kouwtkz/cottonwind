@@ -1,3 +1,4 @@
+// deno-lint-ignore-file
 import { parse } from "npm:yaml";
 
 async function getParsedData(path: string) {

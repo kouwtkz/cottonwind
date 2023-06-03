@@ -26,12 +26,16 @@ const dataPath = `${mediaPath}/_data`;
 const imageDataPath = `${dataPath}/gallery`;
 const imageData = await getParsedData(imageDataPath);
 
+interface listItem{
+  src: string
+  setup: boolean
+}
 const soundDataPath = `${dataPath}/sound`;
 const soundData = await getParsedData(soundDataPath);
 const musicData = soundData.music;
 let setupSound = "";
 if (musicData.list) {
-  const setupSearch = musicData.list.filter((e) => e.setup);
+  const setupSearch = musicData.list.filter((e: listItem) => e.setup);
   if (setupSearch.length > 0) {
     setupSound = setupSearch[0].src;
   } else if (musicData.list.length > 0) {
