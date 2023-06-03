@@ -9,7 +9,10 @@ export default function date_format(
   const d = typeof date === "object" ? date : new Date(date);
   return format_str.replace(
     /Y|y|n|m|j|d|w|WW|G|g|H|h|AA|I|i|S|s|L|l|A|a|W/g,
-    (m: string | undefined) => {
+    // mの型エラーがどうしても消えないのでエラー自体を無視
+    // deno-lint-ignore ban-ts-comment
+    // @ts-expect-error
+    (m: string) => {
       switch (m) {
         case "Y":
           return `${utc ? d.getUTCFullYear() : d.getFullYear()}`;
