@@ -12,11 +12,8 @@ async function getParsedData(path: string) {
           case "object":
             data = { ...data, ..._default };
             break;
-          case "function":
+            default:
             data = _default
-            break;
-          default:
-            data[name] = _default
             break;
         }
       }
