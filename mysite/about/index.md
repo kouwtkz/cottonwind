@@ -2,7 +2,7 @@
 layout: /page/default.pug
 type: "page"
 section: about
-image: "/images/art/代理に私服を着せてみた.png"
+image: "/icons/icon.png"
 flags:
   variable: true
 tags:
