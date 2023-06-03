@@ -1,54 +1,59 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    // --locationは自サイトのドメインを入力すること
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "update",
-            "detail": "Yaml管理",
-            "type": "shell",
-            "command": "cd script; deno run --allow-env --allow-read --allow-write ./updateGalleryYaml.ts"
-        },
-        {
-            "label": "build",
-            "detail": "ビルドする",
-            "type": "shell",
-            "command": "cd mysite; deno task lume --location ${config:site.url}",
-            "dependsOrder": "sequence",
-            "dependsOn": ["update"]
-        },
-        {
-            "label": "deploy",
-            "detail": "ビルド＆Firebaseへデプロイする",
-            "type": "shell",
-            "command": "firebase deploy",
-            "dependsOrder": "sequence",
-            "dependsOn": ["build"]
-        },
-        {
-            "label": "start",
-            "detail": "デバッグする",
-            "type": "shell",
-            "command": "cd mysite; deno task lume -s",
-            "dependsOrder": "sequence",
-            "dependsOn": ["update"]
-        },
-        {
-            "label": "upgrade",
-            "detail": "Lumeのアップグレード",
-            "type": "shell",
-            "command": "cd mysite; deno task lume upgrade"
-        },
-        {
-            "type": "shell",
-            "command": "cd mysite/_site; node D:/Application/node/wsv.js ./ 3000",
-            "label": "view"
-        },
-        {
-            "label": "init",
-            "type": "shell",
-            "command": "cd mysite; deno run -Ar https://deno.land/x/lume/init.ts"
-        }
-    ]
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  // --locationは自サイトのドメインを入力すること
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "update",
+      "detail": "Yaml管理",
+      "type": "shell",
+      "command": "cd script; deno run --allow-env --allow-read --allow-write ./updateGalleryYaml.ts"
+    },
+    {
+      "label": "build",
+      "detail": "ビルドする",
+      "type": "shell",
+      "command": "cd mysite; deno task lume --location ${config:site.url}",
+      "dependsOrder": "sequence",
+      "dependsOn": ["update"]
+    },
+    {
+      "label": "deploy",
+      "detail": "ビルド＆Firebaseへデプロイする",
+      "type": "shell",
+      "command": "firebase deploy",
+      "dependsOrder": "sequence",
+      "dependsOn": ["build"]
+    },
+    {
+      "label": "start",
+      "detail": "デバッグする",
+      "type": "shell",
+      "command": "cd mysite; deno task lume -s",
+      "dependsOrder": "sequence",
+      "dependsOn": ["update"]
+    },
+    {
+      "label": "upgrade",
+      "detail": "Lumeのアップグレード",
+      "type": "shell",
+      "command": "cd mysite; deno task lume upgrade"
+    },
+    {
+      "type": "shell",
+      "command": "cd mysite/_site; node D:/Application/node/wsv.js ./ 3000",
+      "label": "view"
+    },
+    {
+      "label": "init",
+      "type": "shell",
+      "command": "cd mysite; deno run -Ar https://deno.land/x/lume/init.ts"
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "cd script; deno run --allow-read --allow-write --allow-env ./test.ts"
+    }
+  ]
 }

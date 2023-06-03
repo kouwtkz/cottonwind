@@ -17,6 +17,6 @@ tags:
 これまで作ってたライブラリからGETメゾットのみ抽出した\
 $GETオブジェクトを試すための記事です
 
-[ケース1](?case=1&sort=asc)
-[ケース2](?update)
+[ケース1](?case=1&sort=asc) [ケース2](?update)
+
 <div data-test-elm-write="get"></div>
