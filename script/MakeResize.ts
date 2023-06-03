@@ -171,7 +171,7 @@ export class MakeResize {
               if (resizable && imageNameParse !== null) {
                 switch (this.option.resizeNameOption) {
                   case ResizeNameOption.AfterFile:
-                    return `${imageNameParse[1]}/${imageNameParse[2]}${resizeSizeName}.${imageNameParse[3]}`;
+                    return `${imageNameParse[1]}/${imageNameParse[2]}_${resizeSizeName}.${imageNameParse[3]}`;
                   case ResizeNameOption.BeforeFile:
                     return `${imageNameParse[1]}/${resizeSizeName}/${imageNameParse[2]}.${imageNameParse[3]}`;
                   default:

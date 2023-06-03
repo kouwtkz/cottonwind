@@ -193,6 +193,10 @@ p {
     box-sizing: border-box;
 }
 
+.markdown > p:first-child {
+    margin-top: 6em;
+}
+
 ul {
     display: inline-block;
     margin: 0;

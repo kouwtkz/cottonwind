@@ -1,19 +1,20 @@
-baseURL: 'https://kouwtkz-site.web.app/'
-languageCode: 'ja'
-title: 'わたかぜっこ'
+baseURL: "https://kouwtkz-site.web.app/"
+languageCode: "ja"
+title: "わたかぜっこ"
 maxView: 256
-description: '『わたかぜコウ』のポートフォリオサイト。気まぐれに様々なイラストや作品を載せてます。'
+description: "『わたかぜコウ』のポートフォリオサイト。気まぐれに様々なイラストや作品を載せてます。"
 short:
-  description: 'わたかぜコウのポートフォリオサイト'
+    description: "わたかぜコウのポートフォリオサイト"
 manifest:
-  background_color: "#c1d64c"
-  path: '/manifest.json'
+    path: "/manifest.json"
+    background_color: "#c1d64c"
+    display: "minimal-ui"
 google:
-# とりあえず前のサイトのやーつ
-  analytics: "G-5ZTX38MD12"
+    # とりあえず前のサイトのやーつ
+    analytics: "G-5ZTX38MD12"
 devide:
-  menu:
-    setting: 'app'
+    menu:
+        setting: "app"
 
 enableEmoji: true
 enableRobotsTXT: true
