@@ -144,7 +144,7 @@ export class MakeResize {
       Deno.remove(item.path).catch(() => { });
     });
     removeBlankDir(`${this.option.root}${this.option.cacheDir}/${this.option.resizedDirName}`);
-    return this.resizedList;
+    return this.list;
   }
   // 指定したパスの画像リストを取得する
   getFileList(cur: string) {
