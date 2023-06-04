@@ -1,6 +1,6 @@
 #audio_box.playing(data-title=`title`)
   audio#audio_player(src=`/music/${setupSound}` loop='')
-  script(src='/common/js/audio.js')
+  +linkStatic('/common/js/audio.js')
   div
     .audio.button.play(onclick='audio_play()')
       != svgData.mapList.get(`${svgData.path}/audio/play.svg`)

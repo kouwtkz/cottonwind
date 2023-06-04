@@ -14,6 +14,14 @@
       "label": "build",
       "detail": "ビルドする",
       "type": "shell",
+      "command": "cd mysite; deno task lume",
+      "dependsOrder": "sequence",
+      "dependsOn": ["update"]
+    },
+    {
+      "label": "product_build",
+      "detail": "本番ビルドする",
+      "type": "shell",
       "command": "cd mysite; deno task lume --location ${config:site.url}",
       "dependsOrder": "sequence",
       "dependsOn": ["update"]
@@ -24,7 +32,7 @@
       "type": "shell",
       "command": "firebase deploy",
       "dependsOrder": "sequence",
-      "dependsOn": ["build"]
+      "dependsOn": ["product_build"]
     },
     {
       "label": "start",

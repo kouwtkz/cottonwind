@@ -1,15 +1,15 @@
 export const mediaPath = "_media";
 const sitePath = "_site";
-Deno.mkdir(sitePath).catch(() => {});
+Deno.mkdir(sitePath).catch(() => { });
 function copyStatic(cur: string) {
   Array.from(Deno.readDirSync(cur)).forEach(async (item: Deno.DirEntry) => {
     const itemPath = `${cur}/${item.name}`;
     const outputPath = itemPath.replace(mediaPath, sitePath);
-    if (item.isFile) {
-      await Deno.copyFile(itemPath, outputPath);
-    } else if (item.isDirectory) {
-      if (!/^[._]/.test(item.name)) {
-        await Deno.mkdir(outputPath).catch(() => {});
+    if (!/^[._]/.test(item.name)) {
+      if (item.isFile) {
+        await Deno.copyFile(itemPath, outputPath);
+      } else if (item.isDirectory) {
+        await Deno.mkdir(outputPath).catch(() => { });
         copyStatic(itemPath);
       }
     }
@@ -25,7 +25,7 @@ const dataPath = `${mediaPath}/_data`;
 const imageDataPath = `${dataPath}/gallery`;
 const imageData = await getParsedData(imageDataPath);
 
-interface listItem{
+interface listItem {
   src: string
   setup: boolean
 }
