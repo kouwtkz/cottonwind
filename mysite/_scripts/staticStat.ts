@@ -33,7 +33,10 @@ function get_mtime(path: string | string[]) {
 export const mtimeList = get_mtime(staticPathes).mtimeList;
 
 export function link(page: any, path: string, add_mtime = true) {
-    if (!/^\//.test(path)) path = (page.src.path.replace(/[^/]+$/, '') + path).replace(/\/\.\/|\/([^/]+)\/\.\.\//g, '/');
+    if (!/^\//.test(path)) {
+        const pageRoot = page.src.slug === "index" ? page.src.path.replace(/[^/]+$/, '') : `${page.src.path}/`;
+        path = (pageRoot + path).replace(/\/\.\/|\/([^/]+)\/\.\.\//g, '/');
+    }
     const m = path.match(/\/([^/]+)\.([^.]+)$/);
     const ext = m ? m[2] : "";
     if (!page.data.site.isLocal && add_mtime) {
