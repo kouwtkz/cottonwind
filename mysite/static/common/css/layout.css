@@ -283,7 +283,7 @@ input[type="search"] {
 
 /* スクロールバー設定 */
 body {
-    overflow-y: overlay;
+    overflow-y: scroll;
 }
 
 body::-webkit-scrollbar,
