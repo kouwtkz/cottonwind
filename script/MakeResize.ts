@@ -129,7 +129,7 @@ export class MakeResize {
   }
   private getCacheJsonPath = () => `${this.option.root}${this.option.cacheDir}/${this.option.resizedDirName}/${this.option.cacheJsonName}`;
   async run() {
-    console.log(this.option.logRunText);
+    if (this.option.logRunText) console.log(this.option.logRunText);
     Deno.mkdirSync(`${this.option.root}${this.option.cacheDir}/${this.option.resizedDirName}`, recursive)
     this.list = this.getFileList(`${this.option.root}${this.option.mediaDir}/${this.option.imageDir}`);
     this.resizedList.clear();

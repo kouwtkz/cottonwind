@@ -1,13 +1,3 @@
 //- localhostの場合はmtimeの処理は無効にする（site.tsで定義）
 mixin linkStatic(path, add_mtime = true)
-  - if (!/^\//.test(path)) path = (url.replace(/[^/]+$/, '') + path).replace(/\/\.\/|\/([^/]+)\/\.\.\//g, '/');
-  - const m = path.match(/\/([^/]+)\.([^.]+)$/);
-  - const ext = m ? m[2] : "";
-  if !site.isLocal && add_mtime
-    - const mtime = mtimeList.get(path);
-    - if (mtime) path = path + `?v=${mtime}`
-  case ext
-    when "css"
-      link(href=`${path}` type='text/css' rel='stylesheet')
-    when "js"
-      script(src=`${path}`)
+  != staticStat.link(page, path, add_mtime)
