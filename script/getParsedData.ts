@@ -8,13 +8,10 @@ async function getParsedData(path: string) {
       if (merge_default && data.default) {
         const _default = data.default;
         delete data.default;
-        switch (typeof _default) {
-          case "object":
-            data = { ...data, ..._default };
-            break;
-            default:
-            data = _default
-            break;
+        if ((typeof _default === "object") && (/Object/.test(_default.toString()))) {
+          data = { ...data, ..._default };
+        } else {
+          data = _default
         }
       }
       if (dic[name]) {
