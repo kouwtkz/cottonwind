@@ -68,7 +68,10 @@ h1,
 .list.flex div:has(> a:hover) {
     background-color: var(--main-color-pale-fluo);
 }
-.list.flex div:has(> a:hover) h3 {
+.list.flex a:hover h2 {
+    color: #93a724;
+}
+.list.flex a:hover h3 {
     color: var(--main-color);
 }
 .markdown {

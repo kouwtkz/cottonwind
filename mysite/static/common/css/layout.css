@@ -10,6 +10,7 @@
         linear-gradient(var(--background-top) 30%,
             var(--background-bottom));
     --main-color-strong: #a2b825;
+    --main-color-deep: #9bb022;
     --sub-color: #b99f72;
     --sub-color-soft: #d8bb8a;
     --sub-color-strong: #96815c;
@@ -32,6 +33,7 @@
     --background: linear-gradient(var(--background-top) 30%,
             var(--background-bottom));
     --main-color-strong: #d57b27;
+    --main-color-deep: #c36b18;
     --text-color: #27231d;
 }
 
@@ -249,6 +251,14 @@ a {
 a,
 a * {
     color: var(--main-color-strong);
+}
+a:hover,
+a:hover * {
+    color: var(--main-color);
+}
+h3 a:hover,
+h4 a:hover {
+    color: var(--main-color-soft);
 }
 
 .list h3 {
