@@ -35,4 +35,4 @@ tags:
   通常は3日後までに返信しますが、お急ぎの案件で4日以降返信がなかった際は、\
   再度お問い合わせいただくと幸いです。
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf3RJfxAa_ZTrZCg-1rIQXECSqs5vocJjLj2RhmTuqT7vJaCw/viewform?embedded=true" width="640" height="1200" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+<div style="-webkit-overflow-scrolling:touch !important;"><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf3RJfxAa_ZTrZCg-1rIQXECSqs5vocJjLj2RhmTuqT7vJaCw/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe></div>
