@@ -51,14 +51,24 @@ h1,
     align-content: space-around;
     justify-content: space-evenly;
 }
-.list.flex div {
+.list.flex > div {
     margin: 8px 16px;
 }
 .list.flex a {
     text-decoration: none;
 }
-.list.flex a:hover * {
-    color: var(--main-color-soft);
+.list.flex > div {
+    width: 25%;
+    padding: 8px 16px;
+}
+.list.flex * {
+    transition: 100ms;
+}
+.list.flex div:has(> a:hover) {
+    background-color: var(--main-color-pale-fluo);
+}
+.list.flex div:has(> a:hover) h3 {
+    color: var(--main-color);
 }
 .markdown {
     margin: auto;

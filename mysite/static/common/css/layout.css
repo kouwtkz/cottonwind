@@ -3,6 +3,7 @@
     --main-color-soft: #d4e18b;
     --main-color-pale: #dfec98;
     --main-color-fluo: #c5d85840;
+    --main-color-pale-fluo: #dfec9840;
     --background-top: #fcf8e3;
     --background-bottom: #fff4d1;
     --background:
@@ -24,6 +25,8 @@
     --main-color: #f8b06d;
     --main-color-soft: #f8cfa9;
     --main-color-pale: #fde5c4;
+    --main-color-fluo: #f8b06d40;
+    --main-color-pale-fluo: #fde5c440;
     --background-top: #fffdf2;
     --background-bottom: #fefce7;
     --background: linear-gradient(var(--background-top) 30%,
