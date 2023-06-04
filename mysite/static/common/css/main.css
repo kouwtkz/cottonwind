@@ -57,9 +57,10 @@ h1,
 .list.flex a {
     text-decoration: none;
 }
-.list.flex > div {
-    width: 25%;
+.list.flex a > div {
+    width: 250px;
     padding: 8px 16px;
+    padding-top: 16px;
 }
 .list.flex * {
     transition: 100ms;
