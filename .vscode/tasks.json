@@ -35,12 +35,20 @@
       "dependsOn": ["product_build"]
     },
     {
-      "label": "start",
-      "detail": "デバッグする",
+      "label": "serve",
+      "detail": "自動更新サーバー",
       "type": "shell",
       "command": "cd mysite; deno task lume -s",
       "dependsOrder": "sequence",
       "dependsOn": ["update"]
+    },
+    {
+      "label": "start",
+      "detail": "手動更新サーバー",
+      "type": "shell",
+      "command": "cd mysite/_site; node D:/Application/node/wsv.js ./ 3000",
+      "dependsOrder": "sequence",
+      "dependsOn": ["build"]
     },
     {
       "label": "upgrade",
