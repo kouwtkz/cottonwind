@@ -30,6 +30,6 @@ sns:
   - name: 'github'
     url: 'https://github.com/kouwtkz'
     svg: 'sns/github'
-  - name: 'profcard'
-    url: '/about/profcard'
+  - name: 'kouwtkz'
+    url: '/about/kouwtkz'
     svg: 'sns/other'

@@ -1,17 +1,15 @@
 ---
 layout: /page/default.pug
-type: page
+title: LINK
 section: about
-image: "/images/art/代理に私服を着せてみた.png"
+image: "/icons/icon.png"
 flags:
   variable: true
 tags:
   - sitemap
 ---
 
-# ($.site.author.name)
-
-### 草タイプのもふもふが大好きな絵描きです！
+# LINK
 
 ## メインリンク
 
@@ -21,13 +19,6 @@ tags:
 - Twitter <https://twitter.com/kouwtkz>{target="blank"}
 - VTuberアカウント <https://twitter.com/kouwtkz_v>{target="blank"}
 - Instagram <https://www.instagram.com/kouwtkz/>{target="blank"}
-
-## プロフィール
-
-- メインジャンル：ポケモン、一次創作
-- 好き：マスコットキャラ
-- すみっコぐらし、ミュークルドリーミー、リヴリーなどが好きです！！
-- 旧HNはコウランです！(ゲームで使ってます)
 
 ## メッセージ
 
@@ -66,8 +57,3 @@ tags:
 - くるっぷ <https://crepu.net/user/kouwtkz>{target="blank"}
 - ブログ <https://kour.hatenablog.com/>{target="blank"}
 - ツール置き場 [app/tool](/app/tool)
-
-## 自サイトについて
-
-- このサイトが自サイトになります！
-- 現在は手放したドメイン…cottonwind.com

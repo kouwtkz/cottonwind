@@ -1,14 +1,14 @@
 {
     "folders": [
         {
-            "path": "../mysite/static/"
+            "path": "../mysite/_media/"
         },
         {
             "path": "./"
         }
     ],
     "settings": {
-        "site.url": "https://kouwtkz-site.web.app",
+        "site.url": "https://cottonwind.com",
         "deno.enable": false
     },
     "tasks": {

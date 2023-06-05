@@ -25,11 +25,11 @@ header > div.title {
 
 .logo {
     display: inline-block;
-    margin: 0.75em auto 0.5em;
+    margin: 16px auto 8px;
     font-family: "Mochiy Pop One", sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 2.5em;
+    font-size: 36px;
     line-height: 48px;
     /* identical to box height, or 120% */
 }
@@ -110,7 +110,7 @@ header a {
     color: white;
 }
 #mainarea {
-    padding-top: 150px;
+    padding-top: 120px;
 }
 @keyframes menuClick {
     from {
@@ -197,8 +197,9 @@ header a {
         margin: 0;
     }
     .logo {
-        font-size: 1.5em;
-        margin: 0.25em auto;
+        font-size: 28px;
+        line-height: 48px;
+        margin: 4px auto;
     }
     #mainarea {
         padding-top: 68px;

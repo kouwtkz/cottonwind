@@ -1,5 +1,8 @@
+// アイコンを指定したサイズで生成しつつ、出力したパスなどを参照できるようにした
+
 import { MakeResize, Option, ResizeNameOption } from "../../../script/MakeResize.ts";
 import { mime } from "https://deno.land/x/mimetypes@v1.0.0/mod.ts";
+
 const sizeList = [48, 180, 192, 256, 512];
 const path = "/icons/icon.png";
 const makeIcon = new MakeResize(

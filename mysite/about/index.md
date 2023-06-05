@@ -26,7 +26,9 @@ tags:
 
 九州住み、12/22生まれ​
 
-[» プロフィール詳細](/about/profcard)
+[» プロフィール詳細](/about/kouwtkz)
+
+[» リンク一覧](/about/link)
 
 ## 連絡先
 [» こちらに掲載してます！](/about/contact)
@@ -43,6 +45,7 @@ tags:
 
 ## このサイトについて
 - 自力で作ってます！
+- ドメインは過去に使ってたものをもう一度取りました！
 - [プライバシーポリシー](privacy)
 - 技術的に使ったもの
   - ランタイムエンジン: [Deno🐍☔](https://deno.com/runtime){target="_blank"}
