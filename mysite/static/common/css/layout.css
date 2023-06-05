@@ -198,7 +198,7 @@ p {
     box-sizing: border-box;
 }
 
-.markdown > p:first-child {
+.markdown>p:first-child {
     margin-top: 6em;
 }
 
@@ -252,10 +252,12 @@ a,
 a * {
     color: var(--main-color-strong);
 }
+
 a:hover,
 a:hover * {
     color: var(--main-color);
 }
+
 h3 a:hover,
 h4 a:hover {
     color: var(--main-color-soft);
@@ -444,6 +446,11 @@ body::-webkit-scrollbar-thumb,
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.scrollMargin.showLightbox #mainarea,
+.scrollMargin.showLightbox header>* {
+    margin-right: var(--scroll-margin) !important;
 }
 
 @media screen and (max-width: 800px) {
