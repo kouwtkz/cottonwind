@@ -1,6 +1,6 @@
 // deno-lint-ignore-file
 // staticファイルにあるmtimeを取得し、更新日時を返すMapを生成
-export const staticPathes = ["./static", "./_static"];
+export const staticPathes = ["./_static"];
 function get_mtime(path: string | string[]) {
     const fileInfoList: Map<string, Deno.FileInfo> = new Map();
     let cur_static = '';

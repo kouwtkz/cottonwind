@@ -5,7 +5,7 @@ import sitemap from "lume/plugins/sitemap.ts";
 const site = lume();
 
 site.use(pug());
-site.copy("static", ".");
+// site.copy("static", ".");
 site.use(sitemap({ query: "sitemap=true" }));
 
 export default site;

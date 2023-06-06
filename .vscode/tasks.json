@@ -35,7 +35,7 @@
       "dependsOn": ["product_build"]
     },
     {
-      "label": "serve",
+      "label": "start",
       "detail": "自動更新サーバー",
       "type": "shell",
       "command": "cd mysite; deno task lume -s",
@@ -43,7 +43,7 @@
       "dependsOn": ["update"]
     },
     {
-      "label": "start",
+      "label": "serve",
       "detail": "手動更新サーバー",
       "type": "shell",
       "command": "cd mysite/_site; node D:/Application/node/wsv.js ./ 3000",
