@@ -30,7 +30,7 @@
       "label": "deploy",
       "detail": "ビルド＆CloudFlare Pagesへデプロイする",
       "type": "shell",
-      "command": "wrangler pages deploy mysite/_site --project-name cottonwind",
+      "command": "wrangler pages deploy mysite/_site --project-name cottonwind --commit-dirty true",
       "dependsOrder": "sequence",
       "dependsOn": ["product_build"]
     },
