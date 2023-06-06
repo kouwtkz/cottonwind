@@ -15,8 +15,8 @@ sitemap: true
 - ドメインは過去に使ってたものをもう一度取りました！
 - [プライバシーポリシー](privacy)
 - 技術仕様など
-  - ランタイムエンジン: [Deno🐍☔](https://deno.com/runtime){target="_blank"}
-  - サイトジェネレータ: [lume🐍🔥](https://lume.land/){target="_blank"}
+  - ランタイムエンジン: [Deno🦕☔](https://deno.com/runtime){target="_blank"}
+  - サイトジェネレータ: [lume🦕🔥](https://lume.land/){target="_blank"}
   - テンプレートエンジン: [Pug🐶](https://pugjs.org/api/getting-started.html){target="_blank"} + マークダウン
   - ホスティングサービス: [CloudFlarePages](https://developers.cloudflare.com/pages/){target="_blank"}\
     （ドメインもCloudflareです）
