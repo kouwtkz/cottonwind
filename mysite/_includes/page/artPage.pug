@@ -2,7 +2,7 @@ extends ../html
 include ../components/gallery.pug
 
 block page
-  != customFilter(filters.md(content))
+  +customFilter(content)
   .gallery
     each grp in (childList || [{name: page.data.gallery || page.src.slug, title: page.data.h1, path: page.src.path, max: (page.data.max || 500), flags: page.data.flags || {}}])
       - const data = mediaData.gallery[grp.name];

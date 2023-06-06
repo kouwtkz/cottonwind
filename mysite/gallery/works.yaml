@@ -3,8 +3,7 @@ section: gallery
 type: art-list
 title: WORKS
 index: 1
-flags:
-  moreLink: false
+moreLink: false
 tags:
   - gallery
   - list

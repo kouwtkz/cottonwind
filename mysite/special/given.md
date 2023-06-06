@@ -4,8 +4,7 @@ type: art-list
 section: special
 title: "頂いたファンアート"
 description: "#わたかぜメ絵"
-flags:
-  moreLink: false
+moreLink: false
 index: 1
 tags:
   - special

@@ -1,16 +1,15 @@
 ---
-layout: /page/default.pug
+layout: /page/h1.pug
 section: about
 type: contact
-flags:
-  variable: true
+name: contact
+title: CONTACT
+variable: true
+sitemap: true
 tags:
   - contact
   - page
-  - sitemap
 ---
-
-# CONTACT
 
 ## 連絡先
 

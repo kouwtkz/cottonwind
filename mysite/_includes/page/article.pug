@@ -4,4 +4,4 @@ block page
   h1 #{title}
   date
   h3 #{description}
-  != customFilter(filters.md(content))
+  +customFilter(content)

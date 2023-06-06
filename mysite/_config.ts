@@ -6,6 +6,6 @@ const site = lume();
 
 site.use(pug());
 site.copy("static", ".");
-site.use(sitemap({ query: "sitemap" }));
+site.use(sitemap({ query: "sitemap=true" }));
 
 export default site;

@@ -1,0 +1,12 @@
+---
+layout: /page/default.pug
+type: "page"
+section: about
+image: "/icons/icon.png"
+variable: true
+sitemap: true
+---
+include ../_includes/mixin/functions.pug
+
++insertPageFromName("profile")
++insertPageFromName("overview")

@@ -2,11 +2,11 @@
 layout: /page/default.pug
 type: page
 section: about
+title: PROFILE
+name: profile
 image: "/icons/icon.png"
-flags:
-  variable: true
-tags:
-  - sitemap
+variable: true
+sitemap: true
 ---
 
 # ($.site.author.name)

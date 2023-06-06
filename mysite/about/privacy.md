@@ -2,6 +2,7 @@
 layout: /page/default.pug
 type: "column"
 section: about
+name: privacy
 image: "/images/art/代理に私服を着せてみた.png"
 ---
 

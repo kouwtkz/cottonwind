@@ -1,3 +1,0 @@
-//- localhostの場合はmtimeの処理は無効にする（site.tsで定義）
-mixin linkStatic(path, add_mtime = true)
-  != staticStat.link(page, path, add_mtime)

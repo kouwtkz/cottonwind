@@ -7,8 +7,7 @@ image: null
 categories: []
 date: 2022-05-17T18:22:04+09:00
 index: 1
-flags:
-  draft: false
+draft: false
 tags:
   - test
   - article

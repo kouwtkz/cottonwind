@@ -2,11 +2,10 @@
 layout: /page/default.pug
 title: LINK
 section: about
+name: link
 image: "/icons/icon.png"
-flags:
-  variable: true
-tags:
-  - sitemap
+variable: true
+sitemap: true
 ---
 
 # LINK

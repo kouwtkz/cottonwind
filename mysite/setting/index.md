@@ -2,8 +2,7 @@
 layout: /page/default.pug
 type: "page"
 section: "setting"
-flags:
-  noindex: true
+noindex: true
 ---
 
 # 設定

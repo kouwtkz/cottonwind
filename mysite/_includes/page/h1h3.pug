@@ -3,4 +3,4 @@ extends ../html
 block page
   h1 #{title}
   h3 #{description}
-  != customFilter(filters.md(content))
+  +customFilter(content)

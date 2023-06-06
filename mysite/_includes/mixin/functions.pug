@@ -1,0 +1,17 @@
+//- localhostの場合はmtimeの処理は無効にする（site.tsで定義）
+mixin linkStatic(path, add_mtime = true)
+  != staticStat.link(page, path, add_mtime)
+
+mixin customFilter(content)
+  != link.customFilter(filters.md(content), page)
+
+mixin insertPage(pages)
+  - if(!Array.isArray(pages)) pages = [pages];
+  each page in pages
+    != link.customFilter(filters.md(page.data.content), page)
+
+mixin insertPageFromQuery(query)
+  +insertPage(search.pages(query))
+
+mixin insertPageFromName(name)
+  +insertPage(search.pages(`name=${name}`))
