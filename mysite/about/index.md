@@ -51,7 +51,8 @@ tags:
   - ランタイムエンジン: [Deno🐍☔](https://deno.com/runtime){target="_blank"}
   - サイトジェネレータ: [lume🐍🔥](https://lume.land/){target="_blank"}
   - テンプレートエンジン: [Pug🐶](https://pugjs.org/api/getting-started.html){target="_blank"} + マークダウン
-  - ホスティングサービス: [Firebase](https://firebase.google.com/){target="_blank"}
+  - ホスティングサービス: [CloudFlarePages](https://developers.cloudflare.com/pages/){target="_blank"}\
+    （ドメインもCloudflareです）
   - アニメーション: [GSAP](https://greensock.com/gsap/){target="_blank"}
   - ページ遷移: [BarbaJS](https://barba.js.org/){target="_blank"}
   - フォント: [GoogleFonts](https://fonts.google.com/){target="_blank"} + Lulo Clean

@@ -28,9 +28,9 @@
     },
     {
       "label": "deploy",
-      "detail": "ビルド＆Firebaseへデプロイする",
+      "detail": "ビルド＆CloudFlare Pagesへデプロイする",
       "type": "shell",
-      "command": "firebase deploy",
+      "command": "wrangler pages deploy mysite/_site --project-name cottonwind",
       "dependsOrder": "sequence",
       "dependsOn": ["product_build"]
     },
