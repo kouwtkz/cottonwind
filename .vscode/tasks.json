@@ -5,10 +5,16 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "update",
+      "label": "yaml",
       "detail": "Yaml管理",
       "type": "shell",
       "command": "cd script; deno run --allow-env --allow-read --allow-write ./updateGalleryYaml.ts"
+    },
+    {
+      "label": "update",
+      "detail": "staticのみアップデート",
+      "type": "shell",
+      "command": "cd mysite; deno run --allow-env --allow-read --allow-write ./_scripts/staticCopy.ts"
     },
     {
       "label": "build",
@@ -16,7 +22,7 @@
       "type": "shell",
       "command": "cd mysite; deno task lume",
       "dependsOrder": "sequence",
-      "dependsOn": ["update"]
+      "dependsOn": ["yaml"]
     },
     {
       "label": "product_build",
@@ -24,7 +30,7 @@
       "type": "shell",
       "command": "cd mysite; deno task lume --location ${config:site.url}",
       "dependsOrder": "sequence",
-      "dependsOn": ["update"]
+      "dependsOn": ["yaml"]
     },
     {
       "label": "deploy",
@@ -40,7 +46,7 @@
       "type": "shell",
       "command": "cd mysite; deno task lume -s",
       "dependsOrder": "sequence",
-      "dependsOn": ["update"]
+      "dependsOn": ["yaml"]
     },
     {
       "label": "serve",

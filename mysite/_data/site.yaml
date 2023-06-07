@@ -3,17 +3,20 @@ title: "こっとんうぃんど"
 maxView: 256
 description: "『わたかぜコウ』のポートフォリオサイト。気まぐれに様々なイラストや作品を載せてます。"
 short:
-    description: "わたかぜコウのポートフォリオサイト"
+  description: "わたかぜコウのポートフォリオサイト"
 manifest:
-    path: "/manifest.json"
-    background_color: "#c1d64c"
-    display: "minimal-ui"
+  path: "/manifest.json"
+  background_color: "#c1d64c"
+  display: "minimal-ui"
 google:
-    # とりあえず前のサイトのやーつ
-    analytics: "G-5ZTX38MD12"
+  # とりあえず前のサイトのやーつ
+  analytics: "G-5ZTX38MD12"
 devide:
-    menu:
-        setting: "app"
+  menu:
+    setting: "app"
 
 enableEmoji: true
 enableRobotsTXT: true
+tweet:
+  width: 300
+  height: 500

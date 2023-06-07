@@ -1,0 +1,13 @@
+html
+  head
+    style(type="text/css").
+      body{ margin: 0; overflow: hidden; }
+      a{ color: #a2b825; }
+  body
+    a.twitter-timeline(
+      data-height=site.tweet.height
+      data-lang="ja"
+      href="https://twitter.com/kouwtkz?ref_src=twsrc%5Etfw"
+    )
+      | Tweets by kouwtkz
+    script(async src="https://platform.twitter.com/widgets.js" charset="utf-8")

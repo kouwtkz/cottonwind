@@ -284,7 +284,7 @@ input[type="search"] {
 }
 
 /* スクロールバー設定 */
-body {
+html > body {
     overflow-y: scroll;
 }
 
@@ -523,4 +523,13 @@ body::-webkit-scrollbar-thumb,
 .iconL {
     width: 200px;
     height: 200px;
+}
+
+.page > .profile {
+    width: 400px;
+}
+.markdown.about.page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }

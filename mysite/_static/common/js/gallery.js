@@ -9,6 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const preview_description = preview_text.querySelector(".description");
     const preview_date = preview_text.querySelector(".date");
     const preview_link = preview_text.querySelector(".link a");
+    // ライトボックス処理のメイン関数
     const lightboxSync = (anim = true) => {
         if (location.hash !== "") {
             document.body.classList.add("showLightbox");
@@ -70,6 +71,7 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         }
     };
+    // 画面外をクリックした際にライトボックスを閉じる
     const lightboxBackAction = () => {
         if (history.state === null) {
             history.back();
@@ -83,20 +85,24 @@ window.addEventListener("DOMContentLoaded", () => {
             lightboxBackAction();
         }
     });
+    // 画像の読込が終わったらプレビュー画像と高画質画像を入れ替える
     loading_img.addEventListener("load", (e) => {
         preview_img.src = loading_img.src;
         loading_img.src = "";
         preview_img.classList.remove("nowloading");
     });
+    // URLの変更があった際にライトボックスの処理を行う
     window.addEventListener("hashchange", (e) => {
         lightboxSync();
     });
+    // 最初にURLがライトボックスを見るものならライトボックスを見せる
     lightboxSync(false);
     if (checkScrollMargin()) {
         document.body.classList.add("scrollMargin");
     }
 });
 
+// スクロールバーが横幅に影響を与えるかのチェック
 function checkScrollMargin() {
     const test = document.createElement("div");
     test.style.height = "100px";

@@ -29,8 +29,8 @@ header > div.title {
     font-family: "Mochiy Pop One", sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 36px;
-    line-height: 48px;
+    font-size: 32px;
+    line-height: 32px;
     /* identical to box height, or 120% */
 }
 header .MenuButton {
@@ -110,7 +110,7 @@ header a {
     color: white;
 }
 #mainarea {
-    padding-top: 120px;
+    padding-top: 104px;
 }
 @keyframes menuClick {
     from {

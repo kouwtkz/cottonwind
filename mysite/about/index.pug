@@ -9,5 +9,9 @@ sitemap: true
 include ../_includes/mixin/functions.pug
 
 //- いろんなプロフィールをブロックごとにわけたいところ…
-+insertPageFromName("profile")
-+insertPageFromName("overview")
+//- .profile
+//-   +insertPageFromName("profile")
+.overview
+  +insertPageFromName("overview")
+.tweet(style={width: `${site.tweet.width}px`, height: `${site.tweet.height}px`})
+  iframe(src="/inline/twitter_kouwtkz.html" style={width: `${site.tweet.width}px`, height: `${site.tweet.height}px`, border: "hidden"})

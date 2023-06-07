@@ -9,5 +9,6 @@
         "mysite/_data",
         "mysite/_scripts",
         "mysite/_media/_data"
-    ]
+    ],
+    "commentTranslate.hover.enabled": true
 }
