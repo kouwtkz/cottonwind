@@ -13,3 +13,6 @@ deno.lock
 # cache File
 */.cache/*
 updateGallery.json
+
+# link
+*.lnk
