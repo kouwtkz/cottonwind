@@ -2,18 +2,26 @@
 layout: /page/h1.pug
 type: "page"
 section: about
-name: develop
-title: Develop
+name: spec
+title: SPEC
 image: "/icons/icon.png"
 variable: true
 sitemap: true
 ---
+## 作業環境
+- ペイントソフト
+  - CLIP STUDIO PAINT EX
+  - Adobe PhotoShop
+- ベクターソフト
+  - Figma
+  - Adobe Illustrator
+- コーディング
+  - Visual Studio Code
 
 ## このサイトについて（技術）
 
 - 自力で作ってます！
 - ドメインは過去に使ってたものをもう一度取りました！
-- [プライバシーポリシー](privacy)
 - 技術仕様など
   - ランタイムエンジン: [Deno🦕☔](https://deno.com/runtime){target="_blank"}
   - サイトジェネレータ: [lume🦕🔥](https://lume.land/){target="_blank"}

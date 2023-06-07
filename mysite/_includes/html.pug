@@ -14,6 +14,8 @@ html(lang="ja")
         include body/header
         include components/lightbox
         include components/audio
+        .toTop
+          img(src="/images/svg/watakazeTop.svg" title="トップへ飛ぶ")
         include body/main
     #svg_data(style='display:none')
       #more_button !{svgData.mapList.get(`${svgData.path}/more_button.svg`)}
