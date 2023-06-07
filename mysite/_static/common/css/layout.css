@@ -449,6 +449,7 @@ body::-webkit-scrollbar-thumb,
 }
 
 .scrollMargin.showLightbox #mainarea,
+.scrollMargin.showLightbox .toTop,
 .scrollMargin.showLightbox header>* {
     margin-right: var(--scroll-margin) !important;
 }
