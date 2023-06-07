@@ -453,6 +453,16 @@ body::-webkit-scrollbar-thumb,
     margin-right: var(--scroll-margin) !important;
 }
 
+.toTop {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    width: 124px;
+    cursor: pointer;
+    z-index: 100;
+    visibility: hidden;
+}
+
 @media screen and (max-width: 800px) {
     :root {
         --scroll-margin: 6px;
@@ -497,6 +507,9 @@ body::-webkit-scrollbar-thumb,
 
     .lightbox .preview_text>*:last-child {
         margin-bottom: 48px;
+    }
+    .toTop {
+        width: 92px;
     }
 }
 
