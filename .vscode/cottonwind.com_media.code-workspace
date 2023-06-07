@@ -32,7 +32,7 @@
                 "label": "deploy",
                 "detail": "ビルド＆Firebaseへデプロイする",
                 "type": "shell",
-                "command": "firebase deploy",
+                "command": "cd ../; wrangler pages deploy _site --project-name cottonwind --commit-dirty true",
                 "dependsOrder": "sequence",
                 "dependsOn": ["build"]
             },
