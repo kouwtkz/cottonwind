@@ -1,0 +1,587 @@
+<html>
+<head>
+<meta http-equiv="content-type" charset="utf-8">
+<meta name='viewport' content='width=device-width,initial-scale=1' />
+<title>JSON編集ツール</title>
+<style type="text/css">
+    body{
+            font-family: sans-serif;
+    }
+    .cell{
+            border: 1px solid black ;
+            margin: 8px;
+            min-width: 200px;
+            min-height: 40px;
+            position: relative;
+            cursor: move;
+    }
+    .cellstyle{
+            width: 100%;
+            height: 100%;
+    }
+    .cell .on {
+            border-radius: 50%;
+            opacity: 0;
+            width: 16px;
+            height: 16px;
+            transition: 0.2s;
+            cursor: pointer;
+            margin: 1px 4px;
+    }
+    .cell > .style > .on{
+            position: absolute;
+            top: -8px;
+            bottom: -8px;
+            left: -8px;
+            right: -8px;
+            margin: auto;
+    }
+    .cell {
+        padding: 10px;
+    }
+    .cell > form {
+        margin: 0;
+    }
+    .cell > .value > :nth-child(n + 2) {
+        margin-left: 8px;
+    }
+
+    .cell > .style > .top {
+        bottom: auto;
+    }
+
+    .cell > .style > .bottom {
+        top: auto;
+    }
+
+    .cell > .style > .right {
+        left: auto;
+    }
+    .cell > .style > .left {
+        right: auto;
+    }
+    .cell .on > span{
+        color: white;
+        font-size: 8px;
+        padding-left: 3px;
+    }
+    .brue{
+        background: darkblue;
+    }
+    .red{
+        background: darkred;
+    }
+    .green{
+        background: darkolivegreen;
+    }
+    .on:hover{
+        opacity: 1;
+        transition: 0.2s;
+    }
+    .cell:hover >.style > .on{
+        opacity: 1;
+        transition: 0.2s;
+    }
+    .bd{
+        border:1px solid black
+    }
+    .fl>*{
+        display:block;
+        float:left;
+    }
+    .child>*{
+        clear: both;
+    }
+    .frame{
+        overflow:scroll;
+    }
+    #tree-content{
+        width: 8000px;
+    }
+
+    .value textarea{
+        resize: both;
+    }
+    .f_content > * {
+        float: left;
+    }
+    .value > .f_content{
+        padding-top: 4px;
+    }
+    .value > .f_content:nth-child(2){
+        padding-top: 8px;
+    }
+    .value > * {
+        clear: both;
+    }
+    .f_content > .fl > .f_cln{
+        margin: 0 2px;
+    }
+    .f_txt{
+        width: 80px;
+        height: 20px;
+    }
+    .f_name{
+        width: 100%;
+    }
+    .f_value{
+        width: 100px;
+    }
+    .full_txt{
+        width: 100%;
+        height: 80px;
+        resize: vertical;
+    }
+    .file_form > *{
+        margin: 2px;
+    }
+    .mousemove{
+            opacity: 0.5;
+            position:fixed;
+        }
+        .none{
+            display: none;
+        }
+        .through{
+            pointer-events: none;
+        }
+        .unselectable * {
+            -ms-user-select: none; /* IE 10+ */
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        .selectable * {
+            -ms-user-select: auto;
+            -moz-user-select: auto;
+            -khtml-user-select: auto;
+            -webkit-user-select: auto;
+            user-select: auto;
+        }
+</style>
+</head>
+<body>
+<form name='file_form' class='file_form'>
+    <input type='file' onchange="read_content(this);" />
+    <button type="button" onclick='in_json();'>下のテキストからJSONで読み込む</button>
+    <button type="button" onclick='set_json();'>下のテキストにJSONで書き出す</button>
+</form>
+<textarea id="inout_area" class="full_txt"></textarea>
+<div id="proto" style="display: none;">
+    <div class="fl anker tissue" id='proto_cell' anker='f'>
+        <div class="cell" ontouchstart="mt.mousedown(this, dw_event, 500)" onmousedown="mt.mousedown(this, dw_event, 500)">
+            <form class="value">
+                <div class="f_name_c"><textarea class="f_name f_txt" onchange="this.innerHTML = this.value"></textarea></div>
+                <div class="f_content" style="display:none;">
+                    <div class="fl" stype="display:inline-block;">
+                            <div class="on red" index='64' onclick="tree.click_cell_branch(this)"><span>－</span></div>
+                            <textarea name="f_key" class="f_key f_txt" onchange="this.innerHTML = this.value"></textarea><div class="f_cln">:</div>
+                            <textarea name="f_value" class="f_value f_txt" onchange="this.innerHTML = this.value"></textarea>
+                        </div>
+                    </div>
+            </form>
+            <div class="style" anker='a' >
+                <div class="top on brue" index='1' onclick="tree.click_cell_branch(this)"><span></span></div>
+                <div class="bottom on brue" index='2' onclick="tree.click_cell_branch(this)"><span></span></div>
+                <div class="left on brue" index='4' onclick="tree.click_cell_branch(this)"><span></span></div>
+                <div class="right on brue" index='8' onclick="tree.click_cell_branch(this)"><span></span></div>
+                <div class="bottom left on green" index='16' onclick="tree.click_cell_branch(this)"><span>＋</span></div>
+                <div class="top right on red" index='32' onclick="tree.click_cell_branch(this)"><span>ｘ</span></div>
+            </div>
+        </div>
+        <div class="child"></div>
+    </div>
+</div>
+<div id = "frame" class="frame">
+    <div id = "tree-content" class="fl">
+        <div class="child"></div>
+    </div>
+</div>
+<div style="text-align: center"><p></p><span>Presented by kouwtkz (<a href="/">cottonwind</a>)</span></div>
+<div id="temp_area" class="none through child fl"></div></body>
+<script>
+    var tree_obj = function(){
+        this.id_const = '_cl_'
+        this.frame_const = 'tree-content'
+        this.index = 0;
+        this.pid = this.id_const + this.index;
+    };
+    tree_obj.prototype.MakeTree = function(ar = {}, root = false, parent = "", insert = -1, insaft = false){
+        if (typeof(ar)==="string"){
+            try{
+                ar = JSON.parse(ar);
+            } catch(e) {ar = {}}
+        }
+        if (root) {
+            ar = {root: ar};
+        }
+        for (item in ar) {
+            if(parent === "") {
+                var elm = document.getElementById(this.frame_const);
+            } else {
+                var elm = document.getElementById(parent);
+            }
+            if(typeof(ar[item]) === 'object'){
+                if (insert < 0) {
+                    var celm = elm.getElementsByClassName('child');
+                    if (celm.length > 0) { elm = celm[0]; }
+                    elm.innerHTML = elm.innerHTML + "\n" + document.getElementById('proto_cell').outerHTML;
+                    elm = elm.getElementsByClassName('anker');
+                    elm = elm[elm.length - 1];
+                } else {
+                    var celm = document.getElementById(parent).getElementsByClassName('child');
+                    if (celm.length > 0) { celm = celm[0]; }
+                    if (insert > celm.children.length - 1) {insert = celm.children.length - 1}
+                    elm = celm.children[insert];
+                    if (insaft) {
+                        elm.outerHTML = document.getElementById('proto_cell').outerHTML + "\n" + elm.outerHTML
+                        elm = celm.children[insert]
+                    } else {
+                        elm.outerHTML = elm.outerHTML + "\n" + document.getElementById('proto_cell').outerHTML
+                        elm = celm.children[insert + 1]
+                    }
+                }
+                this.pid = this.id_const + ++this.index;
+                elm.id = this.pid;
+                var pelm = elm.getElementsByClassName('cell')[0];
+                elm = pelm.getElementsByClassName('style')[0];
+                elm.setAttribute("index", this.pid);
+                elm = pelm.getElementsByClassName('value')[0];
+                elm.name = this.pid;
+                elm = pelm.getElementsByClassName('f_name')[0];
+                elm.innerText = item;
+                elm = pelm.getElementsByClassName('style')[0];
+                this.MakeTree(ar[item], false, this.pid);
+            } else {
+                this.pid = parent;
+                elm = elm.getElementsByClassName('cell')[0];
+                var pelm = elm.getElementsByClassName('value')[0];
+                elm = pelm.getElementsByClassName('f_content')
+                elm = elm[elm.length - 1];
+                elm.outerHTML = elm.outerHTML + "\n" + elm.outerHTML
+                elm = pelm.getElementsByClassName('f_content')
+                pelm = elm[elm.length - 2];
+                pelm.style = '';
+                elm = pelm.getElementsByClassName('f_key')[0];
+                elm.innerText = item;
+                elm = pelm.getElementsByClassName('f_value')[0];
+                elm.innerText = ar[item];
+            }
+        }
+        return this.pid;
+    };
+    tree_obj.prototype.parent_seak = function(elm = document.children[0]){
+        try{
+            var welm = elm;
+            while(true){
+                welm = welm.parentElement;
+                if (welm.id !== "") { return welm; }
+            };
+        } catch(e) {}
+        return elm;
+    }
+    tree_obj.prototype.click_cell_branch = function(elm = document.children[0]){
+        var style = elm.currentStyle || document.defaultView.getComputedStyle(elm, '');
+        if (style.opacity < 0.5) {return null;}
+        var celm = document.getElementById(elm.parentElement.getAttribute('index'));
+        var pelm = this.parent_seak(celm);
+        var delm;
+        var dhtml = "";
+        var ind = elm.getAttribute("index");
+        switch (ind){
+            case('1'):      // ↑
+            case('2'):{     // ↓
+                var relm = pelm.getElementsByClassName("child")[0];
+                var curind = relm.children.length - 1;
+                for (var i = 0; i <= curind; i++){
+                    if (relm.children[i].id === celm.id) {
+                        curind = i;
+                        break;
+                    }
+                }
+                delm = relm.children[curind];
+                this.MakeTree({new:{}}, false, pelm.id, curind, ind === '1');
+                break;
+            }
+            case('4'):      // ←
+            case('8'):{     // →
+                if (ind === '4'){
+                    delm = pelm.getElementsByClassName("child")[0];
+                } else {
+                    delm = celm.getElementsByClassName("child")[0];
+                }
+                dhtml = delm.innerHTML;
+                delm.innerHTML = ""
+
+                if (ind === '4'){
+                    this.MakeTree({new:{}}, false, pelm.id);
+                } else {
+                    this.MakeTree({new:{}}, false, celm.id);
+                }
+                delm = document.getElementById(this.pid).getElementsByClassName("child")[0];
+                delm.innerHTML = dhtml;
+                break;
+            }
+            case('16'):{    // +
+                this.MakeTree({"":""}, false, celm.id);
+                break;
+            }
+            case('32'):{    // ×
+                celm.outerHTML = celm.getElementsByClassName("child")[0].innerHTML;
+                break;
+            }
+            case('64'):{
+                    elm.parentElement.outerHTML = ""
+                break;
+            }
+        }
+    }
+    var out_storage = function(key, value){
+        var storage = sessionStorage;
+        storage.removeItem(key);
+        storage.setItem(key, value);
+    }
+    var get_storage = function(key){
+        var storage = sessionStorage;
+        var getstr = storage[key];
+        if (typeof(getstr) === "undefined") getstr = "";
+        return getstr;
+    }
+
+    var in_json = function(json = document.getElementById("inout_area").value){
+        try{
+            if (json === "") { json = "{}"; }
+            obj = JSON.parse(json);
+            document.getElementById('tree-content').getElementsByClassName('child')[0].innerHTML = "";
+            tree = new tree_obj();
+            tree.MakeTree(obj, true);
+            out_storage("cw_json_textarea", document.getElementById("inout_area").value)
+        } catch(e) {
+            alert("パースに失敗しました\n" + e);
+        }
+    }
+    var read_content = function(file_elem){
+        if(file_elem.files.length > 0) {
+            var reader = new FileReader();
+            reader.onload = function (theFile) {
+                document.getElementById("inout_area").value = 
+                    JSON.stringify(JSON.parse(theFile.target.result));
+                // in_json();
+            }
+            reader.readAsText(file_elem.files[0], "utf-8");
+            // reader.readAsText(file_elem.files[0], "shift-jis");
+        }
+    };
+    var set_json = function() {
+        var json = out_json();
+        document.getElementById("inout_area").value = json;
+        out_storage("cw_json_textarea", json);
+    }
+    var out_json = function(){
+        var json = {};
+        var get_cell = function(child_elm){
+            var value_elm = child_elm.getElementsByClassName('value')[0];
+            var f_name = value_elm.getElementsByClassName('f_name')[0].value;
+            var ins_json = {};
+            var f_contents = value_elm.getElementsByClassName('f_content');
+            var f_key = "";
+            for (var j = 0; j < f_contents.length; j++){
+                f_key = f_contents[j].getElementsByClassName('f_key')[0].value;
+                if (f_key !== "") {
+                    ins_json[f_key] = f_contents[j].getElementsByClassName('f_value')[0].value;
+                }
+            }
+            var child_val = get_tree(child_elm);
+            if (Object.keys(child_val).length > 0) {
+                Object.assign(ins_json, child_val);
+            }
+            ins_json = { [f_name]: ins_json };
+            return ins_json;
+        }
+        var get_tree = function(parent_elm = document.getElementById('tree-content')){
+            var tree_json = {};
+            var child_elm = parent_elm.getElementsByClassName('child')[0];
+            var children = child_elm.children;
+            var child_val = {};
+            for (var i = 0; i < children.length; i++) {
+                child_val = get_cell(children[i]);
+                Object.assign(tree_json, child_val);
+            }
+            return tree_json;
+        }
+        json = get_tree();
+        if ('root' in json) { json = json['root']; }
+        var ret = JSON.stringify(json, null , "\t");
+        return ret;
+    }
+    var unselected = function() {
+        if (window.getSelection)
+        {
+            var selection = window.getSelection();
+            selection.collapse(document.body, 0);
+        }
+        else
+        {
+            var selection = document.selection.createRange();
+            selection.setEndPoint("EndToStart", selection);
+            selection.select();
+        }
+    }
+
+    var dw_event = function(args){
+        if (mt.te !== null) {
+            var hdl = document.children[0]
+            if ('hdl' in args) { hdl = args['hdl']; }
+            mt.elm = tree.parent_seak(hdl);
+            var temp_area = document.getElementById('temp_area');
+            temp_area.innerHTML = mt.elm.outerHTML;
+            temp_area.children[0].id = ""
+            temp_area.classList.add("mousemove");
+            temp_area.classList.remove("none");
+            document.children[0].classList.add("unselectable");
+            document.children[0].classList.remove("selectable");
+            temp_area.style.left = mt.pt['x'] + "px";
+            temp_area.style.top = mt.pt['y'] + "px";
+        }
+    }
+    var up_event = function(args){
+        if (mt.mv) {
+            var temp_area = document.getElementById('temp_area');
+            temp_area.classList.add("none");
+            temp_area.classList.remove("mousemove");
+            document.children[0].classList.add("selectable");
+            document.children[0].classList.remove("unselectable");
+            unselected();
+            var elm = document.elementFromPoint(mt.pt['x'], mt.pt['y']);
+            if (elm !== null) {
+                if (!elm.classList.contains("child")){
+                    var pelm = tree.parent_seak(elm);
+                    var id_list = [mt.elm.id];
+                    var cs = mt.elm.getElementsByClassName("tissue");
+                    for (var i = 0; i < cs.length; i++){
+                        if (cs[i].id!=="") { id_list.push(cs[i].id) }
+                    }
+                    var copymode = mt.key_alt || mt.key_ctrl || mt.mult_touch;
+                    if ((copymode || !id_list.includes(pelm.id)) && pelm.id.indexOf(tree.id_const) > -1) {
+                        var rect = pelm.children[0].getBoundingClientRect();
+                        var posx = mt.pt["x"] - (rect["x"] + rect["width"] / 2);
+                        var posy = (rect["y"] + rect["height"] / 2) - mt.pt["y"];
+                        var atan = Math.atan2(posy, posx);
+                        var pi2 = Math.PI / 2;
+                        var jad = pi2 * rect["height"] / 2 / rect["width"];
+                        var jad2 = Math.PI - jad;
+                        var vec = 0;
+                        var mtht = mt.elm.outerHTML;
+                        if (copymode) {
+                            var lelm = mt.elm;
+                            for (var i = 0; i < id_list.length; i++) {
+                                lelm = document.getElementById(id_list[i]);
+                                tree.id = tree.id_const + ++tree.index;
+                                lelm.id = tree.id;
+                                lelm.getElementsByClassName("cell")[0].getElementsByClassName("style")[0].setAttribute("index", tree.id);
+                            }
+                        } else {
+                            mt.elm.outerHTML = "";
+                        }
+                        if (jad <= atan && atan <= jad2) {          // 上
+                            pelm.outerHTML = mtht + "\n" + pelm.outerHTML;
+                            vec = 1;
+                        } else if(-jad >= atan && atan >= -jad2) {  // 下
+                            pelm.outerHTML = pelm.outerHTML + "\n" + mtht;
+                            vec = 2;
+                        } else if(atan < -jad2 || jad2 < atan) {    // 左
+                            pelm = tree.parent_seak(pelm).getElementsByClassName("child")[0];
+                            pelm.innerHTML = pelm.innerHTML + mtht;
+                            vec = 4;
+                        } else {                                    // 右
+                            pelm = pelm.getElementsByClassName("child")[0];
+                            pelm.innerHTML = pelm.innerHTML + mtht;
+                            vec = 8;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    var move_event = function(args = {}){
+        if (mt.mv) {
+            var e = null;
+            if ('e' in args) { e = args['e']; }
+            var temp_area = document.getElementById('temp_area');
+            temp_area.style.left = mt.pt['x'] + "px";
+            temp_area.style.top = mt.pt['y'] + "px";
+        }
+    }
+
+    // マウス待機イベント
+    var move_obj = function(){
+        this.elm = document.children[0];
+        this.te = null;
+        this.mv = false;
+        this.pt = {x:0, y:0};
+        this.key_shift = false;
+        this.key_ctrl = false;
+        this.key_alt = false;
+        this.key_meta = false;
+        this.mult_touch = false;
+    };
+
+    move_obj.prototype.mousedown = function(hdl = null, func = function(args){}, interval = 500, args = {}){
+        args['hdl'] = hdl;
+        var me = this;
+        this.te = setTimeout(function(){
+            me.mv = true;
+            var rect = hdl.getBoundingClientRect();
+            me.pt['x'] = rect['x'];
+            me.pt['y'] = rect['y'];
+            func(args);
+        },interval);
+    }
+    move_obj.prototype.mouseup = function(e = null, func = function(args){}, args = {}){
+        if (this.te !== null) {
+            clearTimeout(this.te);
+            this.te = null;
+            func(args);
+            this.mv = false;
+        }
+    }
+    move_obj.prototype.pointmove = function(e, func = function(args){}, args = {}){
+        if (typeof(event.touches) !== "undefined"){
+            this.mult_touch = event.touches.length > 1;
+            if(!e.pageX)e = event.touches[0];
+        }
+        args['e'] = e;
+        this.pt['x'] = e.pageX;
+        this.pt['y'] = e.pageY;
+        func(args);
+    }
+
+    move_obj.prototype.keyaction = function(e, func = function(args){}, args = {}){
+        args['e'] = e;
+        var key_event = e || window.event;
+        this.key_shift = (key_event.shiftKey);
+        this.key_ctrl = (key_event.ctrlKey);
+        this.key_alt = (key_event.altKey);
+        this.key_meta = (key_event.metaKey);
+        func(args);
+    }
+
+    var tree = new tree_obj()
+    var mt = new move_obj()
+    window.onload = function(){
+        document.body.addEventListener("mousemove", function(e){ mt.pointmove(e, move_event) });
+        document.body.addEventListener("touchmove", function(e){ mt.pointmove(e, move_event) });
+        document.body.addEventListener("mouseup", function(e){ mt.mouseup(e, up_event); });
+        document.body.addEventListener("touchend", function(e){ mt.mouseup(e, up_event); });
+        document.body.addEventListener("keydown", function(e){ mt.keyaction(e); });
+        document.body.addEventListener("keyup", function(e){ mt.keyaction(e); });
+        tree.MakeTree(get_storage("cw_json_save"), true);
+        document.getElementById("inout_area").value = get_storage("cw_json_textarea");
+    };
+    window.onbeforeunload = function(){
+        out_storage("cw_json_save", out_json());
+    }
+
+</script>
+</html>

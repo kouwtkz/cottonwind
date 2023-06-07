@@ -1,0 +1,140 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11pt;
+            background-color: #eee;
+        }
+        textarea.edit{
+            width: 100%;
+            resize: vertical;
+        }
+        textarea#script{
+            height: 500px;
+            min-height: 24pt;
+            max-height: 80vh;
+        }
+        textarea#result{
+            height: 132pt;
+        }
+        .block{
+            display: block;
+        }
+        .center-area{
+            margin: 4px 16px;
+            font-size: 12pt;            
+        }
+        .submit{
+            margin: 4px 16px;
+            padding: 4px 64px;
+        }
+    </style>
+</head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="cws.js"></script>
+<script>
+    function result_write(e, undefined_write = false){
+        if (!undefined_write && typeof(e) === 'undefined') return;
+        var result = document.getElementById('result');
+        result.value = (result.value + e + '\n').slice(-65536);
+        result.selectionStart = result.value.length;
+        result.selectionEnd = result.selectionStart;
+        result.scrollTop = result.scrollHeight;
+    }
+    console._log = console.log;
+    console.log = function(e){
+        result_write(e, true);
+        console._log(e);
+    };
+    function run(str){
+        try {
+            return eval(
+                "(new (function(){this.run = function(){try{"
+                    + str + "; return this.value;}catch(e){return e}}})).run()"
+            );
+        } catch(e) {
+            return e;
+        }
+    };
+    function run_from_textarea(){
+        result_write(run(document.getElementById("script").value));
+    }
+    function run_switch_keyevent(e){
+        switch (e.keyCode) {
+            case 13:
+                if (e.ctrlKey) {
+                    document.getElementById('submit').click();
+                    return false;
+                }
+                break;
+            case 9:
+                var tab_num = Number(document.getElementById('tab').value);
+                var tab = tab_num < 0 ? '\t' : ' '.repeat(tab_num);
+                var textarea = document.querySelector('#script');
+
+                var sentence = textarea.value;
+                var len = sentence.length;
+                var pos = textarea.selectionStart;
+                var range = textarea.selectionEnd - pos;
+
+                if (range === 0) {
+                    var before = sentence.substr(0, pos);
+                    var after = sentence.substr(pos, len);                
+                    var word = tab;
+
+                    sentence = before + word + after;
+                    textarea.value = sentence;
+                    textarea.selectionStart = pos + word.length;
+                    textarea.selectionEnd = textarea.selectionStart;
+                } else {
+                    var before = sentence.substr(0, pos);
+                    var m = ('\n' + before).match(/\n.*$/);
+                    var startpos = pos;
+                    if (m) startpos = m.index;
+
+                    before = sentence.substr(0, startpos);
+                    var between = sentence.substr(startpos, pos - startpos + range - 1);
+                    var after = sentence.substr(pos + range - 1, len);                
+                    var word = tab;
+                    if (e.shiftKey) {
+                        var re = eval('/^' + word.slice(0,1) + '{1,' + word.length + '}' + '/mg');
+                        between = between.replace(re, '')
+                    } else {
+                        between = between.replace(/^(.*)$/mg, word + '$1')
+                    }
+                    sentence = before + between + after;
+                    textarea.value = sentence;
+                    textarea.selectionStart = before.length;
+                    textarea.selectionEnd = (before + between).length + 1;
+                }
+
+                return false;
+                break;
+        }
+        return true;
+    }
+    function load_content(){
+        document.getElementById('script').value = cws.storage.get('script');
+    }
+    function save_content(){
+        cws.storage.out('script', document.getElementById('script').value);
+    }
+    window.onload = function(e){
+        load_content();
+    }
+    window.onbeforeunload = function(e){
+        save_content();
+    }
+</script>
+<body>
+    <textarea id='script' class='edit block' onkeydown="return run_switch_keyevent(event);" spellcheck="false"></textarea>
+    <div class='center-area'>
+        <input id='tab' value=-1 type='number' class='tab-num' min=-1 max=24>
+        <button id='submit' class='submit' onclick='run_from_textarea();'>実行</button>
+    </div>
+    <textarea id='result' class='edit block' spellcheck="false"></textarea>
+</body>
+</html>

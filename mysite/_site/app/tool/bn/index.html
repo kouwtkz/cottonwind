@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link href="/app/tool/bn/bn.css" type="text/css" rel="stylesheet">
+        <title>黒メモ</title>
+    </head>
+
+    <body class="menuVisible">
+        <div class="menu">
+            <input type="button" value="OPEN" onclick="loadTextarea()" />
+            <input type="button" value="SAVE" onclick="saveTextarea()" />
+            <input
+                type="button"
+                id="cdButton"
+                value=""
+                onclick="reloadTextarea()"
+            />
+            <div class="right">
+                <input
+                    type="button"
+                    class="switchDisabled"
+                    value="E"
+                    onclick="switchTextareaDisabled()"
+                />
+                <input
+                    type="button"
+                    class="close"
+                    value="×"
+                    onclick="closeTextarea()"
+                />
+            </div>
+        </div>
+        <div class="main">
+            <textarea class="textarea"></textarea>
+            <div class="textarea"><pre></pre></div>
+            <div class="image">
+                <input
+                    type="button"
+                    class="right close"
+                    value="×"
+                    onclick="imgDelete()"
+                /><img />
+            </div>
+            <script src="/app/tool/bn/bn.js"></script>
+        </div>
+    </body>
+</html>
