@@ -25,7 +25,7 @@ mixin galleryList(options = {})
   .list(data-max=`${max}` class=loopListClass)
     each item, i in loopList
       - const src = `${dir}/${item.src}`;
-      - let timeStr = date_format(timeFormat, item.time, true);
+      - let timeStr = date_format(timeFormat, item.time, false);
       - if (timeReplace) timeStr = timeStr.replace(/^(.+)$/, timeReplace);
       .cell
         a(href=`#${encodeURI(src)}`)
