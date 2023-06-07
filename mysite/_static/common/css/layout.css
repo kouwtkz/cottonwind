@@ -121,7 +121,7 @@ main {
     margin: 8px auto 0;
     padding: 0 0 8px;
     min-height: 100%;
-    max-width: 1080px;
+    max-width: 1160px;
     background: rgba(255, 255, 255, 0.5);
     width: 98%;
     border-radius: 8px;
@@ -284,7 +284,7 @@ input[type="search"] {
 }
 
 /* スクロールバー設定 */
-html > body {
+html>body {
     overflow-y: scroll;
 }
 
@@ -525,11 +525,33 @@ body::-webkit-scrollbar-thumb,
     height: 200px;
 }
 
-.page > .profile {
-    width: 400px;
+.column {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
-.markdown.about.page {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+
+.overview {
+    margin: 16px 4px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.overview .icon {
+    margin: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.overview .text {
+    width: auto;
+    margin: 2px 6px 2px 48px;
+    text-align: left;
+    vertical-align: middle;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
 }

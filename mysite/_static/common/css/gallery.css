@@ -11,6 +11,8 @@
 .gallery .list {
     display: flex;
     flex-wrap: wrap;
+    max-width: 1120px;
+    margin: auto;
 }
 .gallery .list.center {
     justify-content: center;

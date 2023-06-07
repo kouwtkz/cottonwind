@@ -2,16 +2,26 @@
 mixin linkStatic(path, add_mtime = true)
   != staticStat.link(page, path, add_mtime)
 
-mixin customFilter(content)
-  != link.customFilter(filters.md(content), page)
+mixin customFilterOnly(content, p = page)
+  != link.customFilter(content, p)
+
+mixin customFilter(content, p = page, ext = "")
+  case ext || p.src.ext
+    when ".md"
+      +customFilterOnly(filters.md(content), p)
+    when ".pug"
+      +customFilterOnly(filters.pug(content), p)
 
 mixin insertPage(pages)
   - if(!Array.isArray(pages)) pages = [pages];
   each page in pages
-    != link.customFilter(filters.md(page.data.content), page)
+    +customFilter(page.data.content, page)
 
 mixin insertPageFromQuery(query)
   +insertPage(search.pages(query))
 
 mixin insertPageFromName(name)
   +insertPage(search.pages(`name=${name}`))
+
+mixin insertMarkdown(name, p = page)
+  +customFilter(md.mapList.get(name), p, ".md")

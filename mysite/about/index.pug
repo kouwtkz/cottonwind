@@ -11,7 +11,20 @@ include ../_includes/mixin/functions.pug
 //- いろんなプロフィールをブロックごとにわけたいところ…
 //- .profile
 //-   +insertPageFromName("profile")
-.overview
-  +insertPageFromName("overview")
-.tweet(style={width: `${site.tweet.width}px`, height: `${site.tweet.height}px`})
-  iframe(src="/inline/twitter_kouwtkz.html" style={width: `${site.tweet.width}px`, height: `${site.tweet.height}px`, border: "hidden"})
+div
+  h1 ABOUT
+  h2 #{site.author.name}
+  h3 #{site.author.ename}
+  .overview
+    .icon
+      img.iconL(src=image style={"border-radius": "100px"})
+      //- a(href=`https://twitter.com/${site.author.twitter.account}` target="_blank") @#{site.author.twitter.account}
+    .text
+      div
+        +insertMarkdown("overview")
+//-   div.spec
+//-     div
+//-       +insertMarkdown("workspec")
+
+
+//- include ../_includes/insert/tweet.pug
