@@ -8,9 +8,6 @@ manifest:
   path: "/manifest.json"
   background_color: "#c1d64c"
   display: "minimal-ui"
-google:
-  # とりあえず前のサイトのやーつ
-  analytics: "G-5ZTX38MD12"
 devide:
   menu:
     setting: "app"
